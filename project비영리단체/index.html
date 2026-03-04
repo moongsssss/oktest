@@ -210,8 +210,11 @@
                             </label>
                         </div>
                         <p class="text-sm text-slate-500 font-bold leading-relaxed break-keep">※ 서류 및 통장, 정관 표지에 날인된 직인이 하나라도 다를 시 사용한 인감을 모두 찍어 필수 첨부해 주세요.</p>
-                        <div id="useSealSection" class="hidden-section animate-slide-down">
-                            <div class="drop-zone border-2 border-dashed border-indigo-200 bg-white rounded-2xl p-6 flex flex-col items-center justify-center h-24 md:h-32 text-center cursor-pointer hover:bg-indigo-50" data-target="doc-use-seal"><input type="file" id="doc-use-seal" class="hidden" accept=".pdf,image/*" multiple><p class="text-sm font-black text-indigo-400">사용인감계 촬영본 첨부</p><p class="file-name text-sm font-black text-indigo-600 mt-2"></p></div>
+                        <div id="useSealSection" class="hidden-section animate-slide-down space-y-6">
+                            <div class="flex flex-col md:flex-row gap-4">
+                                <a href="../use_seal_certificate.jpg" download class="flex-1 flex items-center justify-between p-5 bg-white border border-slate-200 rounded-2xl shadow-sm text-slate-900 font-black text-sm active-scale">사용인감계 양식 받기 <span class="bg-slate-800 text-white text-[10px] px-2 py-1 rounded">JPG</span></a>
+                                <div class="drop-zone flex-1 border-2 border-dashed border-indigo-200 bg-white rounded-2xl p-5 flex flex-col items-center justify-center h-20 md:h-24 text-center cursor-pointer hover:bg-indigo-50 font-black" data-target="doc-use-seal"><input type="file" id="doc-use-seal" class="hidden" accept=".pdf,image/*" multiple><p class="text-sm font-black text-indigo-400">사용인감계 촬영본 첨부</p><p class="file-name text-sm font-black text-indigo-600 mt-1"></p></div>
+                            </div>
                         </div>
                     </div>
 
