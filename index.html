@@ -6,11 +6,12 @@
     <title>가맹점 신청 등록 통합 폼</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- 카카오 주소 API 스크립트 추가 -->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <style>
         body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; -webkit-tap-highlight-color: transparent; }
         input[type="text"], input[type="tel"], input[type="email"] { font-size: 16px !important; }
         .required-mark::after { content: ' *'; color: #ef4444; }
-        /* 터치 피드백 개선 */
         .active-scale:active { transform: scale(0.98); transition: transform 0.1s; }
     </style>
 </head>
@@ -49,10 +50,10 @@
                         <div class="space-y-2">
                             <label for="address" class="block text-sm font-bold text-gray-700 required-mark">주소검색</label>
                             <div class="flex gap-2">
-                                <input type="text" id="address" name="address" required placeholder="주소를 입력 해 주세요" readonly class="flex-1 p-4 bg-gray-50 border border-gray-300 rounded-xl cursor-pointer outline-none">
-                                <button type="button" class="px-5 bg-slate-800 text-white font-bold rounded-xl whitespace-nowrap active:bg-slate-900 transition-colors active-scale">검색</button>
+                                <input type="text" id="address" name="address" required placeholder="주소를 검색해 주세요" readonly onclick="execDaumPostcode()" class="flex-1 p-4 bg-gray-50 border border-gray-300 rounded-xl cursor-pointer outline-none">
+                                <button type="button" onclick="execDaumPostcode()" class="px-5 bg-slate-800 text-white font-bold rounded-xl whitespace-nowrap active:bg-slate-900 transition-colors active-scale">검색</button>
                             </div>
-                            <input type="text" id="addressDetail" name="addressDetail" placeholder="상세주소를 입력 해 주세요" class="w-full mt-2 p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
+                            <input type="text" id="addressDetail" name="addressDetail" placeholder="상세주소를 입력해 주세요" class="w-full mt-2 p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
                         </div>
 
                         <div class="space-y-2">
@@ -88,104 +89,10 @@
                 </div>
             </section>
 
-            <!-- 필수 제출 서류 섹션 -->
-            <section>
-                <h2 class="text-xl font-black text-gray-900 mb-2 flex items-center gap-2">
-                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>필수 제출 서류
-                </h2>
-                <p class="text-xs text-red-500 font-bold mb-4 ml-3.5">※ 미제출 시 심사가 즉시 거절됩니다.</p>
-                
-                <div class="space-y-2">
-                    <div class="p-4 bg-slate-50 rounded-xl flex items-center justify-between border border-slate-200">
-                        <span class="font-black text-slate-700 text-sm md:text-base">사업자 등록증</span>
-                        <span class="text-[10px] bg-blue-600 text-white px-2.5 py-1 rounded font-black uppercase tracking-wider">필수</span>
-                    </div>
-                    <div class="p-4 bg-slate-50 rounded-xl flex items-center justify-between border border-slate-200">
-                        <span class="font-black text-slate-700 text-sm md:text-base">통장 사본</span>
-                        <span class="text-[10px] bg-blue-600 text-white px-2.5 py-1 rounded font-black uppercase tracking-wider">필수</span>
-                    </div>
-                    <div class="p-4 bg-slate-50 rounded-xl flex items-center justify-between border border-slate-200">
-                        <span class="font-black text-slate-700 text-sm md:text-base">영업 신고증</span>
-                        <span class="text-[10px] bg-blue-600 text-white px-2.5 py-1 rounded font-black uppercase tracking-wider">필수</span>
-                    </div>
-                    <div class="p-4 bg-slate-100 rounded-xl border border-slate-300">
-                        <div class="flex items-center justify-between mb-1.5">
-                            <span class="font-black text-slate-800 text-sm md:text-base">대표자 신분증</span>
-                            <span class="text-[10px] bg-blue-600 text-white px-2.5 py-1 rounded font-black uppercase tracking-wider">필수</span>
-                        </div>
-                        <p class="text-[11px] text-blue-700 font-bold">외국인: 외국인 등록증 및 여권 사진 모두 제출 필수</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 매장 사진 가이드 섹션 -->
-            <section>
-                <h2 class="text-xl font-black text-gray-900 mb-2 flex items-center gap-2">
-                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>매장 사진 상세 가이드
-                </h2>
-                <p class="text-xs text-blue-600 font-bold mb-5 ml-3.5">※ 가이드에 맞춰 정확히 6장을 준비해 주세요.</p>
-
-                <div class="grid grid-cols-1 gap-3">
-                    <!-- Guide Item 1 -->
-                    <div class="p-5 bg-blue-50/50 border border-blue-100 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-black rounded uppercase">OUTSIDE 01</span>
-                            <h3 class="font-black text-slate-900 text-[15px]">매장 외부 및 전경</h3>
-                        </div>
-                        <p class="text-xs text-slate-500 leading-snug font-bold">건물 전체와 매장 출입구가 보이도록 멀리서 촬영 (1장)</p>
-                    </div>
-
-                    <!-- Guide Item 2 -->
-                    <div class="p-5 bg-blue-50/50 border border-blue-100 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-black rounded uppercase">OUTSIDE 02</span>
-                            <h3 class="font-black text-slate-900 text-[15px]">간판 및 주소 확인</h3>
-                        </div>
-                        <p class="text-xs text-slate-500 leading-snug font-bold">상호명 간판 촬영 (간판 없을 시 도로명 주소판 대체) (1장)</p>
-                    </div>
-
-                    <!-- Guide Item 3 -->
-                    <div class="p-5 bg-blue-50/50 border border-blue-100 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-black rounded uppercase">OUTSIDE 03</span>
-                            <h3 class="font-black text-slate-900 text-[15px]">출입문 개방 상태</h3>
-                        </div>
-                        <p class="text-xs text-slate-500 leading-snug font-bold">반드시 문을 열고 촬영! 매장 내부가 3/4 이상 보여야 함 (1장)</p>
-                    </div>
-
-                    <!-- Guide Item 4 -->
-                    <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-1 bg-slate-700 text-white text-[10px] font-black rounded uppercase">INSIDE 01</span>
-                            <h3 class="font-black text-slate-900 text-[15px]">매장 내부 전경</h3>
-                        </div>
-                        <p class="text-xs text-slate-500 leading-snug font-bold">테이블, 카운터 등 전체 인테리어가 잘 보이게 촬영 (1장)</p>
-                    </div>
-
-                    <!-- Guide Item 5 -->
-                    <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-1 bg-slate-700 text-white text-[10px] font-black rounded uppercase">INSIDE 02</span>
-                            <h3 class="font-black text-slate-900 text-[15px]">업종 식별 설비</h3>
-                        </div>
-                        <p class="text-xs text-slate-500 leading-snug font-bold">주방 화구, 냉장고 등 업종 증빙 집기 촬영 (1장)</p>
-                    </div>
-
-                    <!-- Guide Item 6 -->
-                    <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="px-2.5 py-1 bg-slate-700 text-white text-[10px] font-black rounded uppercase">INSIDE 03</span>
-                            <h3 class="font-black text-slate-900 text-[15px]">내부 추가 각도</h3>
-                        </div>
-                        <p class="text-xs text-slate-500 leading-snug font-bold">INSIDE 02 사진을 다른 각도에서 한 장 더 촬영 (1장)</p>
-                    </div>
-                </div>
-            </section>
-
             <!-- 제출 섹션 -->
             <section class="space-y-8">
-                <!-- 파일 업로드 인풋 (숨김) -->
-                <input type="file" id="fileUpload" multiple class="hidden" accept="image/*,.pdf">
+                <!-- 실제 파일 선택 창 (숨김) -->
+                <input type="file" id="fileInput" name="files" multiple class="hidden" accept="image/*,.pdf">
                 
                 <button type="button" id="uploadBtn" class="w-full p-8 border-2 border-dashed border-blue-300 bg-blue-50/30 rounded-2xl flex flex-col items-center gap-3 hover:bg-blue-50 transition-colors active-scale">
                     <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-md">
@@ -215,6 +122,19 @@
     </div>
 
     <script>
+        // 카카오 주소 API 실행 함수
+        function execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = '';
+                    if (data.userSelectedType === 'R') { addr = data.roadAddress; } 
+                    else { addr = data.jibunAddress; }
+                    document.getElementById("address").value = addr;
+                    document.getElementById("addressDetail").focus();
+                }
+            }).open();
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const form = document.getElementById('registrationForm');
             const chk = document.getElementById('policyAgree');
@@ -222,7 +142,7 @@
             const noBizNum = document.getElementById('noBizNum');
             const bizNumberInput = document.getElementById('bizNumber');
             const uploadBtn = document.getElementById('uploadBtn');
-            const fileInput = document.getElementById('fileUpload');
+            const fileInput = document.getElementById('fileInput');
             const fileStatus = document.getElementById('fileStatus');
 
             // 1. 사업자번호 '입력안함' 처리
@@ -241,9 +161,11 @@
                 }
             });
 
-            // 2. 파일 업로드 트리거 및 상태 표시
-            uploadBtn.addEventListener('click', () => fileInput.click());
-            
+            // 2. 파일 업로드 버튼 활성화
+            uploadBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+
             fileInput.addEventListener('change', function() {
                 const count = this.files.length;
                 if (count > 0) {
@@ -274,7 +196,6 @@
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 alert('가맹점 신청이 정상적으로 접수되었습니다.\n심사 결과는 휴대폰 번호로 안내드립니다.');
-                // 실제 서버 전송 로직이 여기에 들어갑니다.
             });
         });
     </script>
