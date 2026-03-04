@@ -215,38 +215,78 @@
                 </div>
             </section>
 
-            <!-- 6. 매장 사진 업로드 (유지) -->
+            <!-- 6. 매장 사진 업로드 (6장 상세 가이드 적용) -->
             <section class="space-y-10 text-left">
                 <div class="flex items-center gap-4 text-left">
                     <div class="w-10 h-10 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-black shadow-lg text-sm md:text-base uppercase tracking-tighter">PHO</div>
                     <h2 class="text-2xl md:text-3xl font-black tracking-tight text-slate-800 uppercase text-left">매장(활동공간) 사진 첨부</h2>
                 </div>
 
+                <div class="bg-slate-900 rounded-3xl p-6 md:p-8 text-left shadow-lg border-l-8 border-indigo-500">
+                    <p class="text-white text-sm md:text-lg font-black break-keep leading-relaxed text-left">
+                        💡 <span class="text-indigo-400 font-black">자택 또는 사무실</span>이 영업장인 경우에도 동일하게 <br class="hidden md:block">건물 외부 전경과 실제 업무를 보시는 내부 공간을 가이드에 맞춰 촬영해 주세요.
+                    </p>
+                </div>
+
                 <div class="space-y-12 text-left">
+                    <!-- 외부 사진 파트 (3장) -->
                     <div class="space-y-6">
-                        <h3 class="text-lg md:text-2xl font-black text-indigo-600 px-2 uppercase tracking-widest flex items-center gap-3 text-left"><span class="w-3 h-3 bg-indigo-600 rounded-full shadow-lg animate-pulse"></span> 외부/전경 사진</h3>
+                        <h3 class="text-lg md:text-2xl font-black text-indigo-600 px-2 uppercase tracking-widest flex items-center gap-3 text-left"><span class="w-3 h-3 bg-indigo-600 rounded-full shadow-lg animate-pulse"></span> 매장 외부 사진 파트</h3>
                         <div class="space-y-6">
                             <div class="p-8 md:p-12 bg-indigo-50 border border-indigo-100 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative hover:shadow-xl transition-all shadow-md text-left">
                                 <div class="flex-1 space-y-4 text-left">
                                     <div class="inline-flex items-center gap-3 bg-indigo-600 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase shadow-md transition-transform">외부 01</div>
-                                    <h4 class="text-2xl md:text-3xl font-black text-slate-800 text-left font-black">활동 공간 외부 전경</h4>
-                                    <p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep text-left font-black">건물 전체와 단체 사무실(또는 입구)이 나오도록 <span class="text-indigo-600 font-black underline underline-offset-8 decoration-2 font-black">멀리서 최대한 넓게</span> 촬영해 주세요.</p>
+                                    <h4 class="text-2xl md:text-3xl font-black text-slate-800 text-left">매장 외부 전체 전경</h4>
+                                    <p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep text-left">매장 입구와 건물 전체가 나오도록 <span class="text-indigo-600 font-black underline underline-offset-8 decoration-2 font-black">멀리서 최대한 넓게</span> 촬영해 주세요.</p>
                                 </div>
-                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-indigo-500 shadow-lg shadow-slate-100 font-black" data-target="p-out-1"><input type="file" id="p-out-1" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name text-center uppercase font-black">사진 첨부</p></div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-indigo-500 shadow-lg shadow-slate-100 font-black" data-target="p-out-1"><input type="file" id="p-out-1" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name text-center uppercase">사진 첨부</p></div>
                             </div>
                             <div class="p-8 md:p-12 bg-indigo-50 border border-indigo-100 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative hover:shadow-xl transition-all shadow-md text-left">
-                                <div class="flex-1 space-y-4 text-left"><div class="inline-flex items-center gap-3 bg-indigo-600 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase shadow-md transition-transform text-left">외부 02</div><h4 class="text-2xl md:text-3xl font-black text-slate-800 text-left font-black">단체 현판/간판 사진</h4><p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep text-left font-black">*간판이 없으면 건물에 부착된 도로명 표지판 주소를 촬영해 주세요.</p></div>
-                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-indigo-500 shadow-lg shadow-slate-100 font-black" data-target="p-out-2"><input type="file" id="p-out-2" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name text-center uppercase font-black">사진 첨부</p></div>
+                                <div class="flex-1 space-y-4 text-left">
+                                    <div class="inline-flex items-center gap-3 bg-indigo-600 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase shadow-md transition-transform">외부 02</div>
+                                    <h4 class="text-2xl md:text-3xl font-black text-slate-800 text-left">매장 간판 사진</h4>
+                                    <p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep text-left font-black">*간판이 없으면 건물에 부착된 도로명 표지판 주소를 촬영해 주세요.</p>
+                                </div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-indigo-500 shadow-lg shadow-slate-100 font-black" data-target="p-out-2"><input type="file" id="p-out-2" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name text-center uppercase">사진 첨부</p></div>
+                            </div>
+                            <div class="p-8 md:p-12 bg-indigo-50 border border-indigo-100 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative hover:shadow-xl transition-all shadow-md text-left">
+                                <div class="flex-1 space-y-4 text-left">
+                                    <div class="inline-flex items-center gap-3 bg-indigo-600 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase shadow-md transition-transform">외부 03</div>
+                                    <h4 class="text-2xl md:text-3xl font-black text-slate-800 text-left">문을 열고 내부 촬영</h4>
+                                    <p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep font-black text-left">반드시 <span class="text-indigo-600 font-black underline decoration-2 font-black">출입문을 열고</span>, 문 너머로 <span class="text-indigo-600 font-black underline decoration-2 font-black">매장 안이 보이게</span> 촬영해 주세요.</p>
+                                </div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-indigo-500 shadow-lg shadow-slate-100 text-center font-black" data-target="p-out-3"><input type="file" id="p-out-3" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-300 file-name text-center uppercase">사진 첨부</p></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="space-y-6 text-left">
-                        <h3 class="text-lg md:text-2xl font-black text-slate-800 px-2 uppercase tracking-widest flex items-center gap-3 text-left"><span class="w-3 h-3 bg-slate-800 rounded-full shadow-lg"></span> 내부 사진 파트</h3>
+                    <!-- 내부 사진 파트 (3장) -->
+                    <div class="space-y-6">
+                        <h3 class="text-lg md:text-2xl font-black text-slate-800 px-2 uppercase tracking-widest flex items-center gap-3 text-left"><span class="w-3 h-3 bg-slate-800 rounded-full shadow-lg"></span> 매장 내부 사진 파트</h3>
                         <div class="space-y-6">
                             <div class="p-8 md:p-12 bg-slate-50 border border-slate-200 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative shadow-sm hover:shadow-xl transition-all group text-left">
-                                <div class="flex-1 space-y-4 text-left"><div class="inline-flex items-center gap-3 bg-slate-800 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase shadow-md transition-transform text-left">내부 01</div><h4 class="text-2xl md:text-3xl font-black text-slate-800 tracking-tight leading-tight text-left">실제 업무 공간 전경</h4><p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep text-left font-black">내부 전체 모습이 보이게 <span class="text-slate-900 font-black underline underline-offset-4 decoration-2 italic text-left font-black">멀리서 촬영해 주세요.</span></p></div>
-                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-slate-300 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-slate-500 shadow-lg shadow-slate-100 text-center font-black" data-target="p-in-1"><input type="file" id="p-in-1" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-slate-400 file-name text-center uppercase font-black">사진 첨부</p></div>
+                                <div class="flex-1 space-y-4 text-left">
+                                    <div class="inline-flex items-center gap-3 bg-slate-800 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase shadow-md transition-transform">내부 01</div>
+                                    <h4 class="text-2xl md:text-3xl font-black text-slate-800 tracking-tight leading-tight text-left">매장 전체의 모습</h4>
+                                    <p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep text-left font-black">매장 내부 전체의 모습이 보이게 <span class="text-slate-900 font-black underline underline-offset-4 decoration-2 italic text-left">멀리서 촬영해 주세요.</span></p>
+                                </div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-slate-300 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-slate-500 shadow-lg shadow-slate-100 text-center font-black" data-target="p-in-1"><input type="file" id="p-in-1" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-slate-400 file-name text-center uppercase">사진 첨부</p></div>
+                            </div>
+                            <div class="p-8 md:p-12 bg-slate-50 border border-slate-200 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative shadow-sm hover:shadow-xl transition-all group text-left">
+                                <div class="flex-1 space-y-4 text-left">
+                                    <div class="inline-flex items-center gap-3 bg-slate-800 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase shadow-md transition-transform">내부 02</div>
+                                    <h4 class="text-2xl md:text-3xl font-black text-slate-800 tracking-tight leading-tight text-left">업종 식별 설비시설</h4>
+                                    <p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep text-left font-black">냉장고, 주방, 집기류 등 <span class="text-slate-900 font-black underline underline-offset-4 decoration-2 italic text-left">업종을 알 수 있게 넓게 촬영해 주세요.</span></p>
+                                </div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-slate-300 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-slate-500 shadow-lg shadow-slate-100 text-center font-black" data-target="p-in-2"><input type="file" id="p-in-2" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-slate-400 file-name text-center uppercase">사진 첨부</p></div>
+                            </div>
+                            <div class="p-8 md:p-12 bg-slate-50 border border-slate-200 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative shadow-sm hover:shadow-xl transition-all group text-left">
+                                <div class="flex-1 space-y-4 text-left">
+                                    <div class="inline-flex items-center gap-3 bg-slate-800 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase shadow-md transition-transform text-left">내부 03</div>
+                                    <h4 class="text-2xl md:text-3xl font-black text-slate-800 tracking-tight leading-tight font-black text-left">설비시설 추가 사진</h4>
+                                    <p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed break-keep text-left font-black">내부 02번의 설비시설을 <span class="text-slate-900 font-black underline underline-offset-4 decoration-2 italic text-left">또 다른 각도에서 촬영해 주세요.</span></p>
+                                </div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-slate-300 bg-white rounded-[2.5rem] flex items-center justify-center cursor-pointer active-scale transition-all hover:border-slate-500 shadow-lg shadow-slate-100 text-center font-black" data-target="p-in-3"><input type="file" id="p-in-3" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-slate-400 file-name text-center uppercase">사진 첨부</p></div>
                             </div>
                         </div>
                     </div>
