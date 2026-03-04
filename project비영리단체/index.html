@@ -54,7 +54,7 @@
                         <span class="text-indigo-400 text-[10px] md:text-xs font-black uppercase tracking-[0.2em]">Non-profit Audit</span>
                     </div>
                     <div class="space-y-3 text-left">
-                        <h2 class="text-white text-2xl md:text-4xl font-black leading-tight break-keep tracking-tight text-left">비영리단체 전용 서류를 확인해 주세요<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-300 font-black">공문 및 확약서 날인이 필수입니다</span></h2>
+                        <h2 class="text-white text-2xl md:text-4xl font-black leading-tight break-keep tracking-tight text-left">정관 및 공문 서류를 확인해 주세요<br><span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-300 font-black">비영리단체 전용 심사 프로세스</span></h2>
                         <p class="text-indigo-200/60 text-sm md:text-lg font-medium opacity-80 break-keep text-left">통장 인감과 동일한 인감 날인이 누락되지 않도록 주의해 주세요.</p>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
             <section class="space-y-8 text-left">
                 <div class="flex items-center gap-4 text-left">
                     <div class="w-10 h-10 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-black shadow-lg">1</div>
-                    <h2 class="text-2xl md:text-3xl font-black tracking-tight text-slate-800 uppercase text-left font-black">비영리단체 정보</h2>
+                    <h2 class="text-2xl md:text-3xl font-black tracking-tight text-slate-800 uppercase text-left font-black">비영리단체(사업장) 정보</h2>
                 </div>
                 <div class="bg-slate-50 border border-slate-200 rounded-[2.5rem] p-8 md:p-12 space-y-10 shadow-sm text-left">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
@@ -102,6 +102,13 @@
                     </div>
 
                     <div class="pt-8 border-t border-slate-200 space-y-6 text-left">
+                        <div class="bg-indigo-900 rounded-3xl p-6 md:p-8 text-white shadow-xl">
+                            <h3 class="text-lg md:text-xl font-black mb-3 flex items-center gap-2">📢 공인인증서 발급 필수 안내</h3>
+                            <p class="text-sm md:text-base font-medium text-indigo-100 break-keep leading-relaxed text-left font-black">
+                                사업자용 <span class="text-white font-black underline decoration-indigo-400">공인인증서 발급</span>이 반드시 필요합니다. <br class="hidden md:block">
+                                발급을 완료하신 후, 아래에 <span class="text-white font-black">인증서 담당자 정보</span>를 입력해 주세요.
+                            </p>
+                        </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                             <div class="space-y-2.5 text-left"><label class="text-xs md:text-sm font-black text-slate-500 required-mark uppercase tracking-widest text-left">인증서 담당자 연락처</label><input type="tel" id="certManagerPhone" required placeholder="010-0000-0000" class="w-full p-4 md:p-5 bg-white border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-bold text-lg"></div>
                             <div class="space-y-2.5 text-left"><label class="text-xs md:text-sm font-black text-slate-500 required-mark uppercase tracking-widest text-left">인증서 담당자 이메일</label><input type="email" id="certManagerEmail" required placeholder="manager@email.com" class="w-full p-4 md:p-5 bg-white border-2 border-slate-100 rounded-2xl outline-none focus:border-indigo-500 transition-all font-bold text-lg"></div>
@@ -118,7 +125,33 @@
                 </div>
             </section>
 
-            <!-- 3. 비영리 전용 확약서 및 공인 섹션 (신규) -->
+            <!-- 3. 공동 대표자 정보 (법인사업자 톤으로 보강) -->
+            <section id="jointRepSection" class="hidden-section text-left">
+                <div class="bg-indigo-600 rounded-[3rem] p-8 md:p-16 space-y-12 shadow-2xl animate-slide-down text-left text-white">
+                    <div class="text-left space-y-3">
+                        <h2 class="text-3xl md:text-4xl font-black tracking-tight text-left">공동 대표자(부대표) 정보</h2>
+                        <p class="text-indigo-100 text-lg md:text-xl font-medium opacity-90 text-left">공동 대표의 경우 동의 및 위임장이 필수입니다.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-slate-900 text-left">
+                        <div class="space-y-2.5 text-left"><label class="text-xs md:text-sm font-black text-indigo-100 uppercase tracking-widest text-left">부대표 성함</label><input type="text" id="subOwnerName" placeholder="성함 입력" class="w-full p-5 bg-white border-2 border-transparent rounded-2xl outline-none focus:border-slate-900 transition-all font-black text-xl shadow-lg"></div>
+                        <div class="space-y-2.5 text-left"><label class="text-xs md:text-sm font-black text-indigo-100 uppercase tracking-widest text-left">부대표 연락처</label><input type="tel" id="subOwnerPhone" placeholder="연락처 입력" class="w-full p-5 bg-white border-2 border-transparent rounded-2xl outline-none focus:border-slate-900 transition-all font-black text-xl shadow-lg"></div>
+                    </div>
+                    <div class="bg-indigo-700/40 rounded-[2.5rem] p-8 md:p-12 space-y-10 border border-indigo-400/30 text-left shadow-inner text-white">
+                        <p class="text-white text-lg md:text-2xl font-black italic underline decoration-indigo-300 underline-offset-8 decoration-2 break-keep text-left">※ 공동 대표 필수 서류를 첨부해 주세요.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                            <a href="../form_account.jpg" download class="flex items-center justify-between p-6 bg-white rounded-3xl active-scale text-slate-900 font-black text-lg shadow-xl hover:bg-slate-50 transition-all text-left">1. 결제계좌 이용신청서 <span class="bg-indigo-600 text-white text-[10px] px-2 py-1 rounded font-black tracking-widest uppercase">양식</span></a>
+                            <a href="../joint_rep_agree.pdf" download class="flex items-center justify-between p-6 bg-white rounded-3xl active-scale text-slate-900 font-black text-lg shadow-xl hover:bg-slate-50 transition-all text-left">2. 공동대표자 가입동의 및 위임장 <span class="bg-indigo-600 text-white text-[10px] px-2 py-1 rounded font-black tracking-widest uppercase">양식</span></a>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 text-left">
+                            <div class="drop-zone border-2 border-dashed border-white/40 bg-white/10 rounded-3xl p-6 flex flex-col items-center justify-center h-20 md:h-28 text-center cursor-pointer hover:bg-white/20 transition-all shadow-sm text-left" data-target="doc-sub-id"><input type="file" id="doc-sub-id" class="hidden" accept="image/*,.pdf" multiple><p class="text-xs md:text-sm font-black text-white uppercase tracking-widest text-center font-black">신분증 첨부</p><p class="file-name text-sm font-black text-indigo-200 mt-2 text-center font-black"></p></div>
+                            <div class="drop-zone border-2 border-dashed border-white/40 bg-white/10 rounded-3xl p-6 flex flex-col items-center justify-center h-20 md:h-28 text-center cursor-pointer hover:bg-white/20 transition-all shadow-sm text-left" data-target="doc-joint-1"><input type="file" id="doc-joint-1" class="hidden" accept="image/*,.pdf" multiple><p class="text-xs md:text-sm font-black text-white uppercase tracking-widest text-center font-black">위임 서류 1</p><p class="file-name text-sm font-black text-indigo-200 mt-2 text-center font-black"></p></div>
+                            <div class="drop-zone border-2 border-dashed border-white/40 bg-white/10 rounded-3xl p-6 flex flex-col items-center justify-center h-20 md:h-28 text-center cursor-pointer hover:bg-white/20 transition-all shadow-sm text-left" data-target="doc-joint-2"><input type="file" id="doc-joint-2" class="hidden" accept="image/*,.pdf" multiple><p class="text-xs md:text-sm font-black text-white uppercase tracking-widest text-center font-black">위임 서류 2</p><p class="file-name text-sm font-black text-indigo-200 mt-2 text-center font-black"></p></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. 비영리 전용 확약서 및 공인 섹션 (PDF 링크 적용) -->
             <section class="space-y-8 text-left">
                 <div class="flex items-center gap-4 text-left">
                     <div class="w-10 h-10 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-black shadow-lg">3</div>
@@ -133,15 +166,19 @@
                             <h3 class="text-lg md:text-xl font-black flex items-center gap-2">📄 비영리법인 실제소유자 확약서 및 공문</h3>
                             <p class="text-sm text-slate-400 font-bold leading-relaxed">※ 실제소유자 정보 및 통장에 날인된 도장과 같은 인감 날인이 필수입니다.</p>
                             <div class="flex flex-col md:flex-row gap-6">
-                                <div class="drop-zone flex-1 border-2 border-dashed border-white/30 bg-white/5 rounded-[2rem] p-6 flex flex-col items-center justify-center h-24 md:h-32 text-center cursor-pointer hover:bg-white/10 transition-all" data-target="doc-nonprofit-owner"><input type="file" id="doc-nonprofit-owner" class="hidden" accept=".pdf,image/*" multiple><p class="text-sm font-black opacity-70">확약서 및 공문 첨부</p><p class="file-name text-sm font-black text-indigo-300 mt-2"></p></div>
+                                <a href="../%E1%84%89%E1%85%B5%E1%86%AF%E1%84%8C%E1%85%A6%E1%84%89%E1%85%A9%E1%84%8B%E1%85%AE%E1%84%8C%E1%85%A1%E1%84%92%E1%85%AA%E1%84%80%E1%85%B5%E1%86%AB%20%E1%84%80%E1%85%A5%E1%86%BC%E1%84%86%E1%85%AE%E1%86%AB%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%89%E1%85%B5%E1%86%A8.pdf" download class="flex-1 flex items-center justify-between p-6 bg-white rounded-[2rem] active-scale text-slate-900 font-black text-lg shadow-xl">양식 받기 <span class="bg-indigo-600 text-white text-[10px] px-2 py-1 rounded uppercase">PDF</span></a>
+                                <div class="drop-zone flex-1 border-2 border-dashed border-white/30 bg-white/5 rounded-[2rem] p-6 flex flex-col items-center justify-center h-24 md:h-32 text-center cursor-pointer hover:bg-white/10 transition-all" data-target="doc-nonprofit-owner"><input type="file" id="doc-nonprofit-owner" class="hidden" accept=".pdf,image/*" multiple><p class="text-sm font-black opacity-70">작성 후 첨부</p><p class="file-name text-sm font-black text-indigo-300 mt-2"></p></div>
                             </div>
                         </div>
 
                         <!-- 법인 서류 미보유 공문 및 확약서 -->
                         <div class="pt-8 border-t border-white/10 space-y-6">
-                            <h3 class="text-lg md:text-xl font-black">📄 법인 서류 미보유 시 공문 및 확약서</h3>
-                            <p class="text-sm text-slate-400 font-bold leading-relaxed">※ 법인 등기부등본 등 서류가 없는 경우, 해당 내용의 공문 및 확약서에 통장 인감을 날인하여 제출해 주세요.</p>
-                            <div class="drop-zone border-2 border-dashed border-white/30 bg-white/5 rounded-[2rem] p-6 flex flex-col items-center justify-center h-24 md:h-32 text-center cursor-pointer hover:bg-white/10 transition-all font-black" data-target="doc-no-corp-paper"><input type="file" id="doc-no-corp-paper" class="hidden" accept=".pdf,image/*" multiple><p class="text-sm font-black opacity-70">공문 및 확약서 첨부</p><p class="file-name text-sm font-black text-indigo-300 mt-2 font-black italic"></p></div>
+                            <h3 class="text-lg md:text-xl font-black">📄 비영리법인 확약서 (법인 서류 미보유 시)</h3>
+                            <p class="text-sm text-slate-400 font-bold leading-relaxed">※ 법인 등기부등본 등 서류가 없는 경우, 해당 내용의 확약서에 통장 인감을 날인하여 제출해 주세요.</p>
+                            <div class="flex flex-col md:flex-row gap-6">
+                                <a href="../%E1%84%91%E1%85%B5%E1%86%AF%E1%84%89%E1%85%AE_%E1%84%87%E1%85%B5%E1%84%8B%E1%85%A7%E1%86%BC%E1%84%85%E1%85%B5%E1%84%87%E1%85%A5%E1%84%87%E1%85%B5%E1%86%AB%20%E1%84%92%E1%85%AA%E1%84%80%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A5%20%E1%84%8B%E1%85%A3%E1%86%BC%E1%84%89%E1%85%B5%E1%86%A8.pdf" download class="flex-1 flex items-center justify-between p-6 bg-white rounded-[2rem] active-scale text-slate-900 font-black text-lg shadow-xl">양식 받기 <span class="bg-indigo-600 text-white text-[10px] px-2 py-1 rounded uppercase">PDF</span></a>
+                                <div class="drop-zone flex-1 border-2 border-dashed border-white/30 bg-white/5 rounded-[2rem] p-6 flex flex-col items-center justify-center h-24 md:h-32 text-center cursor-pointer hover:bg-white/10 transition-all font-black" data-target="doc-no-corp-paper"><input type="file" id="doc-no-corp-paper" class="hidden" accept=".pdf,image/*" multiple><p class="text-sm font-black opacity-70">작성 후 첨부</p><p class="file-name text-sm font-black text-indigo-300 mt-2 font-black italic"></p></div>
+                            </div>
                         </div>
 
                         <div class="pt-6 border-t border-white/10">
@@ -156,7 +193,7 @@
                 </div>
             </section>
 
-            <!-- 4. 사용인감계 및 위임장 (신규) -->
+            <!-- 5. 사용인감계 및 위임장 (PDF 링크 적용) -->
             <section class="space-y-8 text-left">
                 <div class="flex items-center gap-4 text-left">
                     <div class="w-10 h-10 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-black shadow-lg">4</div>
@@ -183,29 +220,29 @@
                         <h3 class="text-lg md:text-xl font-black text-slate-800">2. 위임장 제출</h3>
                         <p class="text-sm text-slate-500 font-bold leading-relaxed break-keep">※ 기본정보 작성 후 반드시 <span class="text-indigo-600 font-black underline">통장 인감</span>을 날인하여 제출해 주세요.</p>
                         <div class="flex flex-col md:flex-row gap-4">
-                            <a href="../form_delegate.jpg" download class="flex-1 flex items-center justify-between p-5 bg-white border border-slate-200 rounded-2xl shadow-sm text-slate-900 font-black text-sm active-scale">위임장 양식 다운로드 <span class="bg-slate-800 text-white text-[10px] px-2 py-1 rounded">JPG</span></a>
+                            <a href="../%E1%84%89%E1%85%B5%E1%86%AB%E1%84%80%E1%85%A4%E1%86%A8%E1%84%89%E1%85%A5%20%E1%84%8C%E1%85%A1%E1%84%80%E1%85%B3%E1%86%AB%20%E1%84%8B%E1%85%B1%E1%84%8B%E1%85%B5%E1%86%B7%E1%84%8C%E1%85%A1%E1%86%BC.pdf" download class="flex-1 flex items-center justify-between p-5 bg-white border border-slate-200 rounded-2xl shadow-sm text-slate-900 font-black text-sm active-scale">위임장 양식 받기 <span class="bg-slate-800 text-white text-[10px] px-2 py-1 rounded">PDF</span></a>
                             <div class="drop-zone flex-1 border-2 border-dashed border-slate-200 bg-white rounded-2xl p-5 flex flex-col items-center justify-center h-20 md:h-24 text-center cursor-pointer hover:bg-slate-50 font-black" data-target="doc-delegate"><input type="file" id="doc-delegate" class="hidden" accept=".pdf,image/*" multiple><p class="text-sm font-black text-slate-400">위임장 첨부</p><p class="file-name text-sm font-black text-indigo-600 mt-1"></p></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 5. 비영리 필수 제출 서류 -->
+            <!-- 6. 비영리 필수 제출 서류 -->
             <section class="space-y-8 text-left">
                 <div class="flex items-center gap-4 text-left">
                     <div class="w-10 h-10 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-black shadow-lg">5</div>
                     <h2 class="text-2xl md:text-3xl font-black tracking-tight text-slate-800 uppercase text-left font-black">비영리단체 필수 서류 첨부</h2>
                 </div>
                 <div class="grid grid-cols-2 gap-6 md:gap-10 text-left">
-                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic">고유번호증</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500" data-target="doc-biz-reg"><input type="file" id="doc-biz-reg" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 text-center font-black">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center italic"></p></div></div>
-                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic">정관 (규약)</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500" data-target="doc-bylaws"><input type="file" id="doc-bylaws" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 text-center font-black">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center italic"></p></div></div>
-                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic">대표자 선임 회의록</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500" data-target="doc-minutes"><input type="file" id="doc-minutes" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 text-center font-black">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center italic"></p></div></div>
-                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic">단체 통장 사본</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500" data-target="doc-corp-bank"><input type="file" id="doc-corp-bank" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 text-center font-black">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center italic"></p></div></div>
-                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic text-left">대표자 신분증</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500" data-target="doc-id-card"><input type="file" id="doc-id-card" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 text-center font-black text-center">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center font-black italic text-center"></p></div></div>
+                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic">고유번호증</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500 shadow-sm" data-target="doc-biz-reg"><input type="file" id="doc-biz-reg" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 uppercase text-center font-black">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center font-black italic"></p></div></div>
+                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic">정관 (규약)</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500 shadow-sm font-black" data-target="doc-bylaws"><input type="file" id="doc-bylaws" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 uppercase text-center font-black">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center font-black italic"></p></div></div>
+                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic">대표자 선임 회의록</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500 shadow-sm font-black" data-target="doc-minutes"><input type="file" id="doc-minutes" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 uppercase text-center font-black">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center font-black italic"></p></div></div>
+                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic">단체 통장 사본</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500 shadow-sm font-black" data-target="doc-corp-bank"><input type="file" id="doc-corp-bank" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 uppercase text-center font-black">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center font-black italic"></p></div></div>
+                    <div class="group space-y-3 text-left"><label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic text-left">대표자 신분증</label><div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2.5rem] p-6 flex flex-col items-center justify-center h-20 md:h-28 cursor-pointer active-scale hover:border-indigo-500 shadow-sm font-black" data-target="doc-id-card"><input type="file" id="doc-id-card" class="hidden" accept="image/*,.pdf" multiple><p class="text-sm md:text-xl font-black text-slate-400 uppercase text-center font-black text-center">사진 첨부</p><p class="file-name text-sm md:text-xl font-black text-indigo-600 mt-1 truncate w-full px-4 text-center font-black italic text-center"></p></div></div>
                 </div>
             </section>
 
-            <!-- 6. 매장 사진 업로드 (6장 상세 가이드) -->
+            <!-- 7. 매장 사진 업로드 (6장 가이드) -->
             <section class="space-y-10 text-left">
                 <div class="flex items-center gap-4 text-left">
                     <div class="w-10 h-10 bg-indigo-600 text-white rounded-2xl flex items-center justify-center font-black shadow-lg text-sm md:text-base uppercase tracking-tighter">PHO</div>
@@ -219,15 +256,15 @@
                         <div class="space-y-6">
                             <div class="p-8 md:p-12 bg-indigo-50 border border-indigo-100 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative shadow-md text-left">
                                 <div class="flex-1 space-y-4 text-left"><div class="inline-flex items-center gap-3 bg-indigo-600 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase">외부 01</div><h4 class="text-2xl md:text-3xl font-black text-slate-800">외부 전체 전경</h4><p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed">건물 전체와 입구가 나오도록 <span class="text-indigo-600 font-black underline decoration-2">멀리서 최대한 넓게</span> 촬영</p></div>
-                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale" data-target="p-out-1"><input type="file" id="p-out-1" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name uppercase">사진 첨부</p></div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale" data-target="p-out-1"><input type="file" id="p-out-1" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name uppercase text-center">사진 첨부</p></div>
                             </div>
                             <div class="p-8 md:p-12 bg-indigo-50 border border-indigo-100 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative shadow-md text-left">
                                 <div class="flex-1 space-y-4 text-left"><div class="inline-flex items-center gap-3 bg-indigo-600 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase">외부 02</div><h4 class="text-2xl md:text-3xl font-black text-slate-800">단체 간판/주소</h4><p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed">단체명 간판 또는 도로명 주소판 촬영</p></div>
-                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale" data-target="p-out-2"><input type="file" id="p-out-2" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name uppercase">사진 첨부</p></div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale" data-target="p-out-2"><input type="file" id="p-out-2" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name uppercase text-center">사진 첨부</p></div>
                             </div>
                             <div class="p-8 md:p-12 bg-indigo-50 border border-indigo-100 rounded-[3rem] flex flex-col md:flex-row gap-8 md:items-center relative shadow-md text-left">
                                 <div class="flex-1 space-y-4 text-left"><div class="inline-flex items-center gap-3 bg-indigo-600 text-white px-4 py-1.5 rounded-xl text-xs md:text-sm font-black tracking-widest uppercase">외부 03</div><h4 class="text-2xl md:text-3xl font-black text-slate-800">입구 개방 촬영</h4><p class="text-sm md:text-xl font-bold text-slate-500 leading-relaxed"><span class="text-indigo-600 font-black underline decoration-2">출입문을 열고</span> 내부가 보이게 촬영</p></div>
-                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale" data-target="p-out-3"><input type="file" id="p-out-3" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name uppercase">사진 첨부</p></div>
+                                <div class="drop-zone shrink-0 w-full md:w-72 h-16 md:h-24 border-2 border-dashed border-indigo-200 bg-white rounded-[2rem] flex items-center justify-center cursor-pointer active-scale" data-target="p-out-3"><input type="file" id="p-out-3" class="hidden" accept="image/*" multiple><p class="text-base md:text-2xl font-black text-indigo-400 file-name uppercase text-center">사진 첨부</p></div>
                             </div>
                         </div>
                     </div>
@@ -280,6 +317,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const isJointRep = document.getElementById('isJointRep');
+            const jointRepSection = document.getElementById('jointRepSection');
             const isUseSeal = document.getElementById('isUseSeal');
             const useSealSection = document.getElementById('useSealSection');
 
@@ -287,10 +325,12 @@
                 if(checkbox && section) {
                     checkbox.addEventListener('change', function() {
                         section.style.display = this.checked ? 'block' : 'none';
+                        if(this.checked) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     });
                 }
             };
 
+            toggleSection(isJointRep, jointRepSection);
             toggleSection(isUseSeal, useSealSection);
 
             document.querySelectorAll('.drop-zone').forEach(zone => {
@@ -326,7 +366,7 @@
 
             document.getElementById('registrationForm').addEventListener('submit', (e) => {
                 e.preventDefault();
-                alert('OKPOS 비영리단체 신청이 정상적으로 접수되었습니다.\n인감 날인 누락 여부를 최종 검토한 후 심사가 진행됩니다.');
+                alert('OKPOS 비영리단체 가맹점 신청이 정상적으로 접수되었습니다.\n성공적인 비즈니스를 기원합니다!');
             });
         });
     </script>
