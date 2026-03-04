@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>가맹점 신청 등록 통합 폼</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; -webkit-tap-highlight-color: transparent; }
+        input[type="text"], input[type="tel"], input[type="email"] { font-size: 16px !important; }
+        .required-mark::after { content: ' *'; color: #ef4444; }
+        /* 터치 피드백 개선 */
+        .active-scale:active { transform: scale(0.98); transition: transform 0.1s; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen pb-12">
+
+    <div class="max-w-xl mx-auto bg-white min-h-screen shadow-2xl">
+        <header class="sticky top-0 bg-white/95 backdrop-blur-md z-30 px-6 py-5 border-b border-gray-200">
+            <h1 class="text-xl font-black text-gray-900">가맹점 신청 등록</h1>
+        </header>
+
+        <form id="registrationForm" class="p-6 space-y-12">
+            
+            <!-- 가맹점 정보 섹션 -->
+            <section>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <div class="px-5 py-4 bg-slate-100 border-b border-slate-200">
+                        <h2 class="text-lg font-black text-slate-800">가맹점 정보</h2>
+                    </div>
+                    <div class="p-5 space-y-6">
+                        <div class="space-y-2">
+                            <label for="storeName" class="block text-sm font-bold text-gray-700 required-mark">가맹점명</label>
+                            <input type="text" id="storeName" name="storeName" required placeholder="매장명을 입력해 주세요" class="w-full p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <label for="bizNumber" class="block text-sm font-bold text-gray-700 required-mark">사업자번호</label>
+                                <label class="flex items-center gap-2 cursor-pointer group">
+                                    <input type="checkbox" id="noBizNum" class="w-4 h-4 rounded border-gray-300 text-slate-600 focus:ring-slate-500">
+                                    <span class="text-xs font-bold text-gray-500 group-hover:text-gray-700">입력안함</span>
+                                </label>
+                            </div>
+                            <input type="tel" id="bizNumber" name="bizNumber" required pattern="[0-9]{10}" placeholder="숫자 10자리를 입력해 주세요" class="w-full p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="address" class="block text-sm font-bold text-gray-700 required-mark">주소검색</label>
+                            <div class="flex gap-2">
+                                <input type="text" id="address" name="address" required placeholder="주소를 입력 해 주세요" readonly class="flex-1 p-4 bg-gray-50 border border-gray-300 rounded-xl cursor-pointer outline-none">
+                                <button type="button" class="px-5 bg-slate-800 text-white font-bold rounded-xl whitespace-nowrap active:bg-slate-900 transition-colors active-scale">검색</button>
+                            </div>
+                            <input type="text" id="addressDetail" name="addressDetail" placeholder="상세주소를 입력 해 주세요" class="w-full mt-2 p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="storeContact" class="block text-sm font-bold text-gray-700 required-mark">가맹점 연락처</label>
+                            <input type="tel" id="storeContact" name="storeContact" required placeholder="가맹점 연락처를 입력해 주세요" class="w-full p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="email" class="block text-sm font-bold text-gray-700">이메일</label>
+                            <input type="email" id="email" name="email" placeholder="이메일을 입력해 주세요" class="w-full p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 대표자 정보 섹션 -->
+            <section>
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+                    <div class="px-5 py-4 bg-slate-100 border-b border-slate-200">
+                        <h2 class="text-lg font-black text-slate-800">대표자 정보</h2>
+                    </div>
+                    <div class="p-5 space-y-6">
+                        <div class="space-y-2">
+                            <label for="ownerName" class="block text-sm font-bold text-gray-700 required-mark">대표자명</label>
+                            <input type="text" id="ownerName" name="ownerName" required placeholder="성함을 입력해 주세요" class="w-full p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="ownerPhone" class="block text-sm font-bold text-gray-700 required-mark">대표자 휴대폰</label>
+                            <input type="tel" id="ownerPhone" name="ownerPhone" required placeholder="010-0000-0000" class="w-full p-4 bg-white border border-gray-300 rounded-xl focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all outline-none">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 필수 제출 서류 섹션 -->
+            <section>
+                <h2 class="text-xl font-black text-gray-900 mb-2 flex items-center gap-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>필수 제출 서류
+                </h2>
+                <p class="text-xs text-red-500 font-bold mb-4 ml-3.5">※ 미제출 시 심사가 즉시 거절됩니다.</p>
+                
+                <div class="space-y-2">
+                    <div class="p-4 bg-slate-50 rounded-xl flex items-center justify-between border border-slate-200">
+                        <span class="font-black text-slate-700 text-sm md:text-base">사업자 등록증</span>
+                        <span class="text-[10px] bg-blue-600 text-white px-2.5 py-1 rounded font-black uppercase tracking-wider">필수</span>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl flex items-center justify-between border border-slate-200">
+                        <span class="font-black text-slate-700 text-sm md:text-base">통장 사본</span>
+                        <span class="text-[10px] bg-blue-600 text-white px-2.5 py-1 rounded font-black uppercase tracking-wider">필수</span>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-xl flex items-center justify-between border border-slate-200">
+                        <span class="font-black text-slate-700 text-sm md:text-base">영업 신고증</span>
+                        <span class="text-[10px] bg-blue-600 text-white px-2.5 py-1 rounded font-black uppercase tracking-wider">필수</span>
+                    </div>
+                    <div class="p-4 bg-slate-100 rounded-xl border border-slate-300">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <span class="font-black text-slate-800 text-sm md:text-base">대표자 신분증</span>
+                            <span class="text-[10px] bg-blue-600 text-white px-2.5 py-1 rounded font-black uppercase tracking-wider">필수</span>
+                        </div>
+                        <p class="text-[11px] text-blue-700 font-bold">외국인: 외국인 등록증 및 여권 사진 모두 제출 필수</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 매장 사진 가이드 섹션 -->
+            <section>
+                <h2 class="text-xl font-black text-gray-900 mb-2 flex items-center gap-2">
+                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>매장 사진 상세 가이드
+                </h2>
+                <p class="text-xs text-blue-600 font-bold mb-5 ml-3.5">※ 가이드에 맞춰 정확히 6장을 준비해 주세요.</p>
+
+                <div class="grid grid-cols-1 gap-3">
+                    <!-- Guide Item 1 -->
+                    <div class="p-5 bg-blue-50/50 border border-blue-100 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-black rounded uppercase">OUTSIDE 01</span>
+                            <h3 class="font-black text-slate-900 text-[15px]">매장 외부 및 전경</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-snug font-bold">건물 전체와 매장 출입구가 보이도록 멀리서 촬영 (1장)</p>
+                    </div>
+
+                    <!-- Guide Item 2 -->
+                    <div class="p-5 bg-blue-50/50 border border-blue-100 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-black rounded uppercase">OUTSIDE 02</span>
+                            <h3 class="font-black text-slate-900 text-[15px]">간판 및 주소 확인</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-snug font-bold">상호명 간판 촬영 (간판 없을 시 도로명 주소판 대체) (1장)</p>
+                    </div>
+
+                    <!-- Guide Item 3 -->
+                    <div class="p-5 bg-blue-50/50 border border-blue-100 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-black rounded uppercase">OUTSIDE 03</span>
+                            <h3 class="font-black text-slate-900 text-[15px]">출입문 개방 상태</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-snug font-bold">반드시 문을 열고 촬영! 매장 내부가 3/4 이상 보여야 함 (1장)</p>
+                    </div>
+
+                    <!-- Guide Item 4 -->
+                    <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-1 bg-slate-700 text-white text-[10px] font-black rounded uppercase">INSIDE 01</span>
+                            <h3 class="font-black text-slate-900 text-[15px]">매장 내부 전경</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-snug font-bold">테이블, 카운터 등 전체 인테리어가 잘 보이게 촬영 (1장)</p>
+                    </div>
+
+                    <!-- Guide Item 5 -->
+                    <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-1 bg-slate-700 text-white text-[10px] font-black rounded uppercase">INSIDE 02</span>
+                            <h3 class="font-black text-slate-900 text-[15px]">업종 식별 설비</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-snug font-bold">주방 화구, 냉장고 등 업종 증빙 집기 촬영 (1장)</p>
+                    </div>
+
+                    <!-- Guide Item 6 -->
+                    <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-2.5 py-1 bg-slate-700 text-white text-[10px] font-black rounded uppercase">INSIDE 03</span>
+                            <h3 class="font-black text-slate-900 text-[15px]">내부 추가 각도</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 leading-snug font-bold">INSIDE 02 사진을 다른 각도에서 한 장 더 촬영 (1장)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 제출 섹션 -->
+            <section class="space-y-8">
+                <!-- 파일 업로드 인풋 (숨김) -->
+                <input type="file" id="fileUpload" multiple class="hidden" accept="image/*,.pdf">
+                
+                <button type="button" id="uploadBtn" class="w-full p-8 border-2 border-dashed border-blue-300 bg-blue-50/30 rounded-2xl flex flex-col items-center gap-3 hover:bg-blue-50 transition-colors active-scale">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-xl flex items-center justify-center shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-black text-blue-700 text-base">사진 및 서류 파일 첨부</p>
+                        <p id="fileStatus" class="text-[11px] text-slate-400 font-bold mt-1">이곳을 터치하여 업로드 (다중 선택 가능)</p>
+                    </div>
+                </button>
+
+                <div class="space-y-6">
+                    <label class="flex items-start gap-3 p-5 bg-red-50 rounded-xl border border-red-100 cursor-pointer group">
+                        <input type="checkbox" id="policyAgree" required class="mt-0.5 w-5 h-5 rounded border-red-300 text-red-600 focus:ring-red-500 transition-all cursor-pointer">
+                        <span class="text-sm font-black text-red-900 leading-snug group-hover:text-red-700">
+                            위 요청 서류 중 가이드에 맞지 않거나 누락된 경우, 카드 가맹 신청 및 심사가 지연될 수 있음을 확인하였으며 이에 동의합니다.
+                        </span>
+                    </label>
+
+                    <button type="submit" id="submitAction" disabled class="w-full py-5 bg-slate-300 text-white rounded-xl font-black text-lg cursor-not-allowed transition-all active-scale">
+                        가맹점 신청 완료
+                    </button>
+                </div>
+            </section>
+
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('registrationForm');
+            const chk = document.getElementById('policyAgree');
+            const btn = document.getElementById('submitAction');
+            const noBizNum = document.getElementById('noBizNum');
+            const bizNumberInput = document.getElementById('bizNumber');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const fileInput = document.getElementById('fileUpload');
+            const fileStatus = document.getElementById('fileStatus');
+
+            // 1. 사업자번호 '입력안함' 처리
+            noBizNum.addEventListener('change', function() {
+                if (this.checked) {
+                    bizNumberInput.value = '';
+                    bizNumberInput.disabled = true;
+                    bizNumberInput.required = false;
+                    bizNumberInput.classList.add('bg-gray-100', 'text-gray-400');
+                    bizNumberInput.placeholder = '사업자번호 없음';
+                } else {
+                    bizNumberInput.disabled = false;
+                    bizNumberInput.required = true;
+                    bizNumberInput.classList.remove('bg-gray-100', 'text-gray-400');
+                    bizNumberInput.placeholder = '숫자 10자리를 입력해 주세요';
+                }
+            });
+
+            // 2. 파일 업로드 트리거 및 상태 표시
+            uploadBtn.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', function() {
+                const count = this.files.length;
+                if (count > 0) {
+                    fileStatus.innerText = `${count}개의 파일이 선택되었습니다.`;
+                    fileStatus.classList.replace('text-slate-400', 'text-blue-600');
+                } else {
+                    fileStatus.innerText = '이곳을 터치하여 업로드 (다중 선택 가능)';
+                    fileStatus.classList.replace('text-blue-600', 'text-slate-400');
+                }
+            });
+
+            // 3. 동의 체크박스 및 버튼 활성화
+            chk.addEventListener('change', function() {
+                if (this.checked) {
+                    btn.disabled = false;
+                    btn.classList.replace('bg-slate-300', 'bg-blue-600');
+                    btn.classList.replace('cursor-not-allowed', 'cursor-pointer');
+                    btn.classList.add('shadow-lg', 'shadow-blue-200');
+                } else {
+                    btn.disabled = true;
+                    btn.classList.replace('bg-blue-600', 'bg-slate-300');
+                    btn.classList.replace('cursor-pointer', 'cursor-not-allowed');
+                    btn.classList.remove('shadow-lg', 'shadow-blue-200');
+                }
+            });
+
+            // 4. 폼 제출 처리
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('가맹점 신청이 정상적으로 접수되었습니다.\n심사 결과는 휴대폰 번호로 안내드립니다.');
+                // 실제 서버 전송 로직이 여기에 들어갑니다.
+            });
+        });
+    </script>
+</body>
+</html>
