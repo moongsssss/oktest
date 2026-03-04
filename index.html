@@ -13,17 +13,46 @@
         input[type="text"], input[type="tel"], input[type="email"] { font-size: 16px !important; }
         .required-mark::after { content: ' *'; color: #ef4444; }
         .active-scale:active { transform: scale(0.98); transition: transform 0.1s; }
-        
-        /* 드래그 앤 드롭 하이라이트 */
         .drop-zone--over { border-color: #2563eb !important; background-color: #eff6ff !important; }
+        
+        /* 애니메이션 효과 */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide { animation: slideIn 0.5s ease-out forwards; }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen pb-12">
 
     <div class="max-w-xl mx-auto bg-white min-h-screen shadow-2xl">
-        <header class="sticky top-0 bg-white/95 backdrop-blur-md z-30 px-6 py-5 border-b border-gray-200">
+        <header class="sticky top-0 bg-white/95 backdrop-blur-md z-30 px-6 py-5 border-b border-gray-200 flex justify-between items-center">
             <h1 class="text-xl font-black text-gray-900">가맹점 신청 등록</h1>
+            <!-- 헤더 우측 간편 가이드 버튼 -->
+            <a href="https://tpay.notion.site/13b68051fd5f43e69e643852654da34f" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full transition-colors active-scale">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="text-xs font-bold">가이드</span>
+            </a>
         </header>
+
+        <!-- 상단 가이드 배너 섹션 -->
+        <div class="px-6 pt-6 animate-slide">
+            <a href="https://tpay.notion.site/13b68051fd5f43e69e643852654da34f" target="_blank" class="group block p-5 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-lg shadow-blue-100 transition-all hover:shadow-xl active-scale">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-blue-100 text-[11px] font-bold mb-1 tracking-wider uppercase">How to apply</p>
+                        <h2 class="text-white text-lg font-black leading-tight">신청 방법이 궁금하신가요?</h2>
+                        <p class="text-blue-100 text-xs mt-1.5 font-bold flex items-center gap-1">
+                            필요 서류 및 상세 가이드 확인하기
+                            <svg class="w-3 h-3 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
+                        </p>
+                    </div>
+                    <div class="w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                </div>
+            </a>
+        </div>
 
         <form id="registrationForm" class="p-6 space-y-12">
             
@@ -87,15 +116,18 @@
                 </div>
             </section>
 
-            <!-- 3. 필수 제출 서류 (개별 업로드) -->
+            <!-- 3. 필수 제출 서류 -->
             <section>
-                <h2 class="text-xl font-black text-gray-900 mb-2 flex items-center gap-2">
-                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>필수 제출 서류
-                </h2>
+                <div class="flex justify-between items-end mb-2">
+                    <h2 class="text-xl font-black text-gray-900 flex items-center gap-2">
+                        <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>필수 제출 서류
+                    </h2>
+                    <!-- 섹션별 가이드 링크 -->
+                    <a href="https://tpay.notion.site/13b68051fd5f43e69e643852654da34f" target="_blank" class="text-[11px] font-bold text-blue-600 border-b border-blue-200 pb-0.5 hover:text-blue-800 transition-colors">서류 준비 가이드 보기</a>
+                </div>
                 <p class="text-xs text-red-500 font-bold mb-4 ml-3.5">※ 미제출 시 심사가 즉시 거절됩니다.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- 서류 1 -->
                     <div class="upload-item group space-y-2">
                         <label class="text-xs font-black text-slate-700 ml-1">사업자 등록증 <span class="text-blue-600 uppercase">필수</span></label>
                         <div class="drop-zone relative border-2 border-dashed border-slate-300 bg-slate-50 rounded-2xl p-4 flex flex-col items-center justify-center transition-all hover:border-blue-400 hover:bg-blue-50 cursor-pointer h-32 text-center" data-target="doc-biz-reg">
@@ -105,7 +137,6 @@
                             <p class="file-name text-[10px] font-black text-blue-600 mt-1 truncate max-w-full"></p>
                         </div>
                     </div>
-                    <!-- 서류 2 -->
                     <div class="upload-item group space-y-2">
                         <label class="text-xs font-black text-slate-700 ml-1">통장 사본 <span class="text-blue-600 uppercase">필수</span></label>
                         <div class="drop-zone relative border-2 border-dashed border-slate-300 bg-slate-50 rounded-2xl p-4 flex flex-col items-center justify-center transition-all hover:border-blue-400 hover:bg-blue-50 cursor-pointer h-32 text-center" data-target="doc-bank-copy">
@@ -115,7 +146,6 @@
                             <p class="file-name text-[10px] font-black text-blue-600 mt-1 truncate max-w-full"></p>
                         </div>
                     </div>
-                    <!-- 서류 3 -->
                     <div class="upload-item group space-y-2">
                         <label class="text-xs font-black text-slate-700 ml-1">영업 신고증 <span class="text-blue-600 uppercase">필수</span></label>
                         <div class="drop-zone relative border-2 border-dashed border-slate-300 bg-slate-50 rounded-2xl p-4 flex flex-col items-center justify-center transition-all hover:border-blue-400 hover:bg-blue-50 cursor-pointer h-32 text-center" data-target="doc-license">
@@ -125,7 +155,6 @@
                             <p class="file-name text-[10px] font-black text-blue-600 mt-1 truncate max-w-full"></p>
                         </div>
                     </div>
-                    <!-- 서류 4 -->
                     <div class="upload-item group space-y-2">
                         <label class="text-xs font-black text-slate-700 ml-1">대표자 신분증 <span class="text-blue-600 uppercase">필수</span></label>
                         <div class="drop-zone relative border-2 border-dashed border-slate-300 bg-slate-50 rounded-2xl p-4 flex flex-col items-center justify-center transition-all hover:border-blue-400 hover:bg-blue-50 cursor-pointer h-32 text-center" data-target="doc-id-card">
@@ -138,11 +167,14 @@
                 </div>
             </section>
 
-            <!-- 4. 매장 사진 상세 가이드 (개별 업로드) -->
+            <!-- 4. 매장 사진 상세 가이드 -->
             <section>
-                <h2 class="text-xl font-black text-gray-900 mb-2 flex items-center gap-2">
-                    <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>매장 사진 업로드
-                </h2>
+                <div class="flex justify-between items-end mb-2">
+                    <h2 class="text-xl font-black text-gray-900 flex items-center gap-2">
+                        <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>매장 사진 업로드
+                    </h2>
+                    <a href="https://tpay.notion.site/13b68051fd5f43e69e643852654da34f" target="_blank" class="text-[11px] font-bold text-blue-600 border-b border-blue-200 pb-0.5 hover:text-blue-800 transition-colors">촬영 가이드 보기</a>
+                </div>
                 <p class="text-xs text-blue-600 font-bold mb-5 ml-3.5">※ 각 가이드에 맞는 사진을 한 장씩 올려주세요. (총 6장)</p>
 
                 <div class="space-y-4">
@@ -161,7 +193,6 @@
                             <p class="file-name text-[9px] font-black text-blue-600 mt-1 truncate px-2"></p>
                         </div>
                     </div>
-
                     <!-- Photo 2 -->
                     <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-5 flex flex-col md:flex-row gap-4 items-center">
                         <div class="flex-1">
@@ -177,7 +208,6 @@
                             <p class="file-name text-[9px] font-black text-blue-600 mt-1 truncate px-2"></p>
                         </div>
                     </div>
-
                     <!-- Photo 3 -->
                     <div class="bg-blue-50/50 border border-blue-100 rounded-2xl p-5 flex flex-col md:flex-row gap-4 items-center">
                         <div class="flex-1">
@@ -193,7 +223,6 @@
                             <p class="file-name text-[9px] font-black text-blue-600 mt-1 truncate px-2"></p>
                         </div>
                     </div>
-
                     <!-- Photo 4 -->
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col md:flex-row gap-4 items-center">
                         <div class="flex-1">
@@ -209,7 +238,6 @@
                             <p class="file-name text-[9px] font-black text-blue-600 mt-1 truncate px-2"></p>
                         </div>
                     </div>
-
                     <!-- Photo 5 -->
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col md:flex-row gap-4 items-center">
                         <div class="flex-1">
@@ -225,7 +253,6 @@
                             <p class="file-name text-[9px] font-black text-blue-600 mt-1 truncate px-2"></p>
                         </div>
                     </div>
-
                     <!-- Photo 6 -->
                     <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 flex flex-col md:flex-row gap-4 items-center">
                         <div class="flex-1">
@@ -294,16 +321,13 @@
 
             // 2. 개별 업로드 및 드래그 앤 드롭 로직
             const dropZones = document.querySelectorAll('.drop-zone');
-
             dropZones.forEach(zone => {
                 const targetId = zone.getAttribute('data-target');
                 const input = document.getElementById(targetId);
                 const fileNameDisplay = zone.querySelector('.file-name');
 
-                // 클릭 시 파일 창 열기
                 zone.addEventListener('click', () => input.click());
 
-                // 파일 선택 시 이름 표시
                 input.addEventListener('change', () => {
                     if (input.files.length) {
                         fileNameDisplay.innerText = input.files[0].name;
@@ -311,7 +335,6 @@
                     }
                 });
 
-                // 드래그 이벤트
                 zone.addEventListener('dragover', (e) => {
                     e.preventDefault();
                     zone.classList.add('drop-zone--over');
@@ -326,7 +349,6 @@
                 zone.addEventListener('drop', (e) => {
                     e.preventDefault();
                     zone.classList.remove('drop-zone--over');
-
                     if (e.dataTransfer.files.length) {
                         input.files = e.dataTransfer.files;
                         fileNameDisplay.innerText = e.dataTransfer.files[0].name;
