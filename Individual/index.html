@@ -259,33 +259,49 @@
                         <label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic font-black text-left flex justify-between items-center">
                             사업자 등록증
                         </label>
-                        <div class="grid grid-cols-2 gap-4">
+                        <div class="grid grid-cols-2 gap-3 md:gap-6">
                             <!-- 직접 촬영 버튼 -->
-                            <div id="openCameraBtn" class="border-2 border-blue-200 bg-blue-50 rounded-3xl p-4 flex flex-col items-center justify-center h-24 md:h-32 cursor-pointer active-scale transition-all hover:border-blue-500 shadow-sm text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7 md:w-9 md:h-9 text-blue-600 mb-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
-                                </svg>
-                                <span class="text-blue-700 font-black text-sm md:text-lg">사진 찍기</span>
+                            <div id="openCameraBtn" class="border-2 border-blue-200 bg-blue-50 rounded-[2rem] p-4 flex flex-col items-center justify-center h-28 md:h-36 cursor-pointer active-scale transition-all hover:border-blue-500 hover:bg-blue-100 shadow-sm text-center">
+                                <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-2 shadow-lg shadow-blue-200">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+                                    </svg>
+                                </div>
+                                <span class="text-blue-700 font-black text-sm md:text-xl">사진 찍기</span>
                             </div>
                             <!-- 갤러리/파일 첨부 버튼 -->
-                            <div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-3xl p-4 flex flex-col items-center justify-center h-24 md:h-32 cursor-pointer active-scale transition-all hover:border-blue-500 shadow-sm text-center" data-target="doc-biz-reg">
+                            <div class="drop-zone border-2 border-dashed border-slate-200 bg-white rounded-[2rem] p-4 flex flex-col items-center justify-center h-28 md:h-36 cursor-pointer active-scale transition-all hover:border-blue-400 shadow-sm text-center" data-target="doc-biz-reg">
                                 <input type="file" id="doc-biz-reg" class="hidden" accept="image/*,.pdf">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-7 h-7 md:w-9 md:h-9 text-slate-400 mb-2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                                </svg>
-                                <span class="text-slate-500 font-black text-sm md:text-lg">사진 첨부</span>
+                                <div class="w-10 h-10 md:w-12 md:h-12 bg-slate-100 text-slate-500 rounded-full flex items-center justify-center mb-2 shadow-sm">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                    </svg>
+                                </div>
+                                <span class="text-slate-600 font-black text-sm md:text-xl">사진 첨부</span>
                                 <p class="file-name hidden"></p>
                             </div>
                         </div>
-                        <!-- 미리보기 영역 -->
-                        <div id="biz-reg-preview-container" class="hidden animate-slide-down mt-4 p-4 bg-slate-50 rounded-[2rem] border border-slate-100 flex items-center gap-4 relative">
-                            <img id="biz-reg-preview-img" class="w-20 h-20 md:w-32 md:h-32 object-cover rounded-2xl shadow-md border-2 border-white">
-                            <div class="flex-1">
-                                <p class="text-slate-800 font-black text-sm md:text-lg mb-2">사업자등록증이 첨부됨</p>
-                                <div class="flex gap-2">
-                                    <button type="button" class="re-attach-btn px-4 py-2 bg-blue-600 text-white rounded-xl font-black text-xs md:text-sm active-scale">다시 첨부</button>
-                                    <button type="button" class="delete-attachment-btn px-4 py-2 bg-red-100 text-red-600 rounded-xl font-black text-xs md:text-sm active-scale">삭제</button>
+                        <!-- 미리보기 영역 (모바일 최적화) -->
+                        <div id="biz-reg-preview-container" class="hidden animate-slide-down mt-4 p-5 bg-white border-2 border-blue-500 rounded-[2.5rem] shadow-xl shadow-blue-100 flex flex-col md:flex-row items-center gap-5 relative overflow-hidden">
+                            <div class="relative w-full md:w-32 h-40 md:h-32 shrink-0">
+                                <img id="biz-reg-preview-img" class="w-full h-full object-cover rounded-2xl shadow-md border border-slate-100">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+                            </div>
+                            <div class="flex-1 w-full text-center md:text-left space-y-3">
+                                <div>
+                                    <p class="text-blue-600 font-black text-xs md:text-sm uppercase tracking-wider mb-1">Attached Document</p>
+                                    <p class="text-slate-900 font-black text-base md:text-xl break-keep">사업자등록증 첨부 완료</p>
+                                </div>
+                                <div class="flex gap-2 justify-center md:justify-start">
+                                    <button type="button" class="re-attach-btn flex-1 md:flex-none px-6 py-3 bg-blue-600 text-white rounded-xl font-black text-sm active-scale shadow-lg shadow-blue-200 transition-all hover:bg-blue-700">다시 첨부</button>
+                                    <button type="button" class="delete-attachment-btn flex-1 md:flex-none px-6 py-3 bg-red-50 text-red-600 rounded-xl font-black text-sm active-scale hover:bg-red-100 transition-all">삭제</button>
+                                </div>
+                            </div>
+                            <!-- Success Checkmark -->
+                            <div class="absolute top-4 right-4 md:top-auto md:bottom-4 md:right-8">
+                                <div class="w-8 h-8 md:w-10 md:h-10 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
                                 </div>
                             </div>
                         </div>
