@@ -259,7 +259,8 @@
                         <label class="text-sm md:text-xl font-black text-slate-700 ml-2 italic font-black text-left flex justify-between items-center">
                             사업자 등록증
                         </label>
-                        <div class="grid grid-cols-2 gap-3 md:gap-6">
+                        <!-- 버튼 그리드 영역 -->
+                        <div id="biz-reg-button-grid" class="grid grid-cols-2 gap-3 md:gap-6">
                             <!-- 직접 촬영 버튼 -->
                             <div id="openCameraBtn" class="border-2 border-blue-200 bg-blue-50 rounded-[2rem] p-4 flex flex-col items-center justify-center h-28 md:h-36 cursor-pointer active-scale transition-all hover:border-blue-500 hover:bg-blue-100 shadow-sm text-center">
                                 <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mb-2 shadow-lg shadow-blue-200">
@@ -282,26 +283,28 @@
                                 <p class="file-name hidden"></p>
                             </div>
                         </div>
-                        <!-- 미리보기 영역 (모바일 최적화) -->
-                        <div id="biz-reg-preview-container" class="hidden animate-slide-down mt-4 p-5 bg-white border-2 border-blue-500 rounded-[2.5rem] shadow-xl shadow-blue-100 flex flex-col md:flex-row items-center gap-5 relative overflow-hidden">
-                            <div class="relative w-full md:w-32 h-40 md:h-32 shrink-0">
-                                <img id="biz-reg-preview-img" class="w-full h-full object-cover rounded-2xl shadow-md border border-slate-100">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
-                            </div>
-                            <div class="flex-1 w-full text-center md:text-left space-y-3">
-                                <div>
-                                    <p class="text-blue-600 font-black text-xs md:text-sm uppercase tracking-wider mb-1">Attached Document</p>
-                                    <p class="text-slate-900 font-black text-base md:text-xl break-keep">사업자등록증 첨부 완료</p>
-                                </div>
-                                <div class="flex gap-2 justify-center md:justify-start">
-                                    <button type="button" class="re-attach-btn flex-1 md:flex-none px-6 py-3 bg-blue-600 text-white rounded-xl font-black text-sm active-scale shadow-lg shadow-blue-200 transition-all hover:bg-blue-700">다시 첨부</button>
-                                    <button type="button" class="delete-attachment-btn flex-1 md:flex-none px-6 py-3 bg-red-50 text-red-600 rounded-xl font-black text-sm active-scale hover:bg-red-100 transition-all">삭제</button>
-                                </div>
-                            </div>
-                            <!-- Success Checkmark -->
-                            <div class="absolute top-4 right-4 md:top-auto md:bottom-4 md:right-8">
-                                <div class="w-8 h-8 md:w-10 md:h-10 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg animate-bounce">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                        <!-- 개선된 미리보기 영역 -->
+                        <div id="biz-reg-preview-container" class="hidden animate-slide-down mt-2">
+                            <div class="relative bg-white rounded-[2rem] border-2 border-blue-500 overflow-hidden shadow-2xl">
+                                <img id="biz-reg-preview-img" class="w-full h-48 md:h-64 object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
+                                    <div class="flex justify-between items-end w-full">
+                                        <div class="space-y-1">
+                                            <div class="flex items-center gap-2">
+                                                <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                                                <span class="text-white font-black text-xs md:text-sm uppercase tracking-widest opacity-80">Uploaded</span>
+                                            </div>
+                                            <p class="text-white font-black text-lg md:text-2xl">사업자등록증</p>
+                                        </div>
+                                        <div class="flex gap-2">
+                                            <button type="button" class="re-attach-btn p-3 bg-white/20 backdrop-blur-md text-white rounded-2xl active-scale hover:bg-white/30 transition-all border border-white/30" title="다시 첨부">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+                                            </button>
+                                            <button type="button" class="delete-attachment-btn p-3 bg-red-500/80 backdrop-blur-md text-white rounded-2xl active-scale hover:bg-red-600 transition-all border border-red-400" title="삭제">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 md:w-6 md:h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /></svg>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -429,7 +432,7 @@
             const bizRegInput = document.getElementById('doc-biz-reg');
             const bizRegPreviewContainer = document.getElementById('biz-reg-preview-container');
             const bizRegPreviewImg = document.getElementById('biz-reg-preview-img');
-            const bizRegZone = bizRegInput.closest('.drop-zone');
+            const bizRegButtonGrid = document.getElementById('biz-reg-button-grid');
 
             let stream = null;
 
@@ -494,16 +497,13 @@
             const showBizRegPreview = (src) => {
                 bizRegPreviewImg.src = src;
                 bizRegPreviewContainer.classList.remove('hidden');
-                bizRegZone.classList.add('hidden'); // Hide original upload zone
+                bizRegButtonGrid.classList.add('hidden'); // Hide the buttons
             };
 
             const hideBizRegPreview = () => {
                 bizRegPreviewContainer.classList.add('hidden');
-                bizRegZone.classList.remove('hidden');
+                bizRegButtonGrid.classList.remove('hidden'); // Show the buttons back
                 bizRegInput.value = '';
-                // Clear any success marks if present
-                const fileNameDisplay = bizRegZone.querySelector('.file-name');
-                if (fileNameDisplay) fileNameDisplay.innerHTML = '';
             };
 
             // Handle normal file input change for biz-reg
