@@ -20,7 +20,6 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
         /* Camera Modal */
         #cameraModal { display: none; position: fixed; inset: 0; background: #000; z-index: 1000; flex-direction: column; align-items: center; justify-content: center; }
         #cameraPreview { width: 100%; height: 100%; object-fit: cover; }
@@ -30,7 +29,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Camera Modal (Fixed UI) -->
+    <!-- Camera Modal -->
     <div id="cameraModal">
         <video id="cameraPreview" autoplay playsinline></video>
         <div class="camera-guide"></div>
@@ -151,9 +150,7 @@
                     </div>
                 </div>
 
-                <!-- Toggles -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
-                    <!-- 공동대표 토글 -->
                     <div class="p-6 rounded-[2.5rem] border-2 border-slate-100 flex justify-between items-center hover:border-blue-200 transition-all">
                         <div class="space-y-1">
                             <p class="font-black text-slate-900 text-lg">공동 대표자가 있나요?</p>
@@ -164,7 +161,6 @@
                             <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-blue-600 peer-checked:after:translate-x-6 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
                         </label>
                     </div>
-                    <!-- 특수업종 토글 -->
                     <div class="p-6 rounded-[2.5rem] border-2 border-slate-100 flex justify-between items-center hover:border-orange-200 transition-all">
                         <div class="space-y-1">
                             <p class="font-black text-slate-900 text-lg">부동산/임대/금융 관련인가요?</p>
@@ -247,23 +243,71 @@
                     <!-- 외부 -->
                     <div class="space-y-8">
                         <h3 class="text-xl font-black text-blue-600 flex items-center gap-2">
-                            <span class="w-2 h-6 bg-blue-600 rounded-full"></span> 매장 외부 (3장)
+                            <span class="w-2 h-6 bg-blue-600 rounded-full"></span> 매장 외부 촬영 (가이드)
                         </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div class="attach-container" data-id="p-out-1" data-label="외부 전경" data-guide="매장 입구와 건물 전체가 멀리서 넓게 보이도록 촬영해주세요"></div>
-                            <div class="attach-container" data-id="p-out-2" data-label="매장 간판" data-guide="매장 간판이 선명하게 보이도록 촬영해주세요"></div>
-                            <div class="attach-container" data-id="p-out-3" data-label="입구 연결 사진" data-guide="출입문을 열고 매장 내부가 함께 보이도록 촬영해주세요"></div>
+                        <div class="grid grid-cols-1 gap-6">
+                            <!-- 외부 01 -->
+                            <div class="p-8 bg-blue-50 border-2 border-blue-100 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-center">
+                                <div class="flex-1 space-y-3">
+                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg">외부 01</div>
+                                    <h4 class="text-xl font-black text-slate-900">매장 외부 전체 전경</h4>
+                                    <p class="text-slate-500 text-sm font-medium break-keep">입구와 건물 전체가 나오도록 <span class="text-blue-600 font-bold underline">멀리서 최대한 넓게</span> 촬영해 주세요.</p>
+                                </div>
+                                <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-out-1" data-label="외부 전경" data-guide="매장 입구와 건물 전체가 멀리서 넓게 보이도록 촬영해주세요"></div>
+                            </div>
+                            <!-- 외부 02 -->
+                            <div class="p-8 bg-blue-50 border-2 border-blue-100 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-center">
+                                <div class="flex-1 space-y-3">
+                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg">외부 02</div>
+                                    <h4 class="text-xl font-black text-slate-900">매장 간판 사진</h4>
+                                    <p class="text-slate-500 text-sm font-medium break-keep">매장 상호가 적힌 <span class="text-blue-600 font-bold underline">간판이 선명하게</span> 보이도록 촬영해 주세요. 간판이 없으면 지번주소를 촬영해 주세요.</p>
+                                </div>
+                                <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-out-2" data-label="매장 간판" data-guide="매장 간판이 선명하게 보이도록 촬영해주세요"></div>
+                            </div>
+                            <!-- 외부 03 -->
+                            <div class="p-8 bg-blue-50 border-2 border-blue-100 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-center">
+                                <div class="flex-1 space-y-3">
+                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg">외부 03</div>
+                                    <h4 class="text-xl font-black text-slate-900">입구 연결 사진 (문 열고)</h4>
+                                    <p class="text-slate-500 text-sm font-medium break-keep">반드시 <span class="text-blue-600 font-bold underline">출입문을 열고</span>, 문 너머로 매장 내부가 함께 보이도록 촬영해 주세요.</p>
+                                </div>
+                                <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-out-3" data-label="입구 연결" data-guide="출입문을 열고 매장 내부가 함께 보이도록 촬영해주세요"></div>
+                            </div>
                         </div>
                     </div>
                     <!-- 내부 -->
                     <div class="space-y-8">
                         <h3 class="text-xl font-black text-slate-800 flex items-center gap-2">
-                            <span class="w-2 h-6 bg-slate-800 rounded-full"></span> 매장 내부 (3장)
+                            <span class="w-2 h-6 bg-slate-800 rounded-full"></span> 매장 내부 촬영 (가이드)
                         </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div class="attach-container" data-id="p-in-1" data-label="내부 전체" data-guide="매장 내부 전체의 모습이 잘 보이도록 넓게 촬영해주세요"></div>
-                            <div class="attach-container" data-id="p-in-2" data-label="주요 시설 1" data-guide="주방, 냉장고 등 업종을 알 수 있는 설비를 촬영해주세요"></div>
-                            <div class="attach-container" data-id="p-in-3" data-label="주요 시설 2" data-guide="시설을 다른 각도에서 한 번 더 촬영해주세요"></div>
+                        <div class="grid grid-cols-1 gap-6">
+                            <!-- 내부 01 -->
+                            <div class="p-8 bg-slate-50 border-2 border-slate-200 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-center">
+                                <div class="flex-1 space-y-3">
+                                    <div class="inline-block px-3 py-1 bg-slate-800 text-white text-[10px] font-black rounded-lg">내부 01</div>
+                                    <h4 class="text-xl font-black text-slate-900">매장 내부 전체 전경</h4>
+                                    <p class="text-slate-500 text-sm font-medium break-keep">매장 내부의 전체적인 모습이 <span class="text-slate-900 font-bold underline">넓게 보이도록</span> 촬영해 주세요.</p>
+                                </div>
+                                <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-in-1" data-label="내부 전경" data-guide="매장 내부 전체의 모습이 잘 보이도록 넓게 촬영해주세요"></div>
+                            </div>
+                            <!-- 내부 02 -->
+                            <div class="p-8 bg-slate-50 border-2 border-slate-200 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-center">
+                                <div class="flex-1 space-y-3">
+                                    <div class="inline-block px-3 py-1 bg-slate-800 text-white text-[10px] font-black rounded-lg">내부 02</div>
+                                    <h4 class="text-xl font-black text-slate-900">업종 식별 주요 시설</h4>
+                                    <p class="text-slate-500 text-sm font-medium break-keep">주방, 냉장고, 집기 등 <span class="text-slate-900 font-bold underline">업종을 확인할 수 있는</span> 설비를 촬영해 주세요.</p>
+                                </div>
+                                <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-in-2" data-label="주요 시설 1" data-guide="주방, 냉장고 등 업종을 알 수 있는 설비를 촬영해주세요"></div>
+                            </div>
+                            <!-- 내부 03 -->
+                            <div class="p-8 bg-slate-50 border-2 border-slate-200 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-center">
+                                <div class="flex-1 space-y-3">
+                                    <div class="inline-block px-3 py-1 bg-slate-800 text-white text-[10px] font-black rounded-lg">내부 03</div>
+                                    <h4 class="text-xl font-black text-slate-900">추가 시설 사진</h4>
+                                    <p class="text-slate-500 text-sm font-medium break-keep">위 설비들을 <span class="text-slate-900 font-bold underline">다른 각도에서</span> 한 번 더 촬영해 주세요.</p>
+                                </div>
+                                <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-in-3" data-label="주요 시설 2" data-guide="시설을 다른 각도에서 한 번 더 촬영해주세요"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -364,6 +408,7 @@
 
             const showPreview = (inputId, src) => {
                 const container = document.querySelector(`.attach-container[data-id="${inputId}"]`);
+                if(!container) return;
                 container.querySelector('.btn-grid').classList.add('hidden');
                 container.querySelector('.preview-area').classList.remove('hidden');
                 container.querySelector('.img-preview').src = src;
@@ -371,6 +416,7 @@
 
             const hidePreview = (inputId) => {
                 const container = document.querySelector(`.attach-container[data-id="${inputId}"]`);
+                if(!container) return;
                 container.querySelector('.btn-grid').classList.remove('hidden');
                 container.querySelector('.preview-area').classList.add('hidden');
                 document.getElementById(inputId).value = '';
@@ -386,27 +432,27 @@
                     <div class="flex flex-col gap-3">
                         <label class="text-[11px] font-black uppercase tracking-[0.2em] ${labelClass} ml-1">${label}</label>
                         <div class="btn-grid grid grid-cols-2 gap-3">
-                            <div class="camera-btn p-4 md:p-6 bg-slate-50 border-2 border-slate-100 rounded-3xl flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm">
-                                <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <div class="camera-btn p-4 bg-slate-50 border-2 border-slate-100 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                                 </div>
-                                <span class="text-blue-700 font-black text-xs md:text-sm">사진 촬영</span>
+                                <span class="text-blue-700 font-black text-xs">사진 촬영</span>
                             </div>
-                            <div class="album-btn p-4 md:p-6 bg-white border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center gap-3 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm">
+                            <div class="album-btn p-4 bg-white border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm">
                                 <input type="file" id="${id}" class="hidden" accept="image/*,.pdf">
-                                <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-500">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-500">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                 </div>
-                                <span class="text-slate-600 font-black text-xs md:text-sm">앨범 선택</span>
+                                <span class="text-slate-600 font-black text-xs">앨범 선택</span>
                             </div>
                         </div>
                         <div class="preview-area hidden animate-slide-down">
                             <div class="relative bg-slate-100 rounded-3xl overflow-hidden border-2 border-blue-500 shadow-2xl">
-                                <img class="img-preview w-full h-48 md:h-64 object-cover">
+                                <img class="img-preview w-full h-48 object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5">
                                     <div class="flex justify-between items-center">
-                                        <p class="text-white font-black text-sm md:text-lg">${label}</p>
-                                        <button type="button" class="reset-btn px-4 py-2 bg-red-500 text-white rounded-xl font-black text-xs md:text-sm active-scale">초기화</button>
+                                        <p class="text-white font-black text-sm">${label}</p>
+                                        <button type="button" class="reset-btn px-4 py-2 bg-red-500 text-white rounded-xl font-black text-xs active-scale">초기화</button>
                                     </div>
                                 </div>
                             </div>
@@ -427,11 +473,14 @@
             });
 
             const toggleSection = (id, sectionId) => {
-                document.getElementById(id).addEventListener('change', (e) => {
-                    const el = document.getElementById(sectionId);
-                    el.style.display = e.target.checked ? 'block' : 'none';
-                    if (e.target.checked) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                });
+                const chk = document.getElementById(id);
+                const el = document.getElementById(sectionId);
+                if(chk && el) {
+                    chk.addEventListener('change', (e) => {
+                        el.style.display = e.target.checked ? 'block' : 'none';
+                        if (e.target.checked) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    });
+                }
             };
 
             toggleSection('isJointRep', 'jointRepSection');
