@@ -142,7 +142,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
                     <div class="p-6 rounded-[2.5rem] border-2 border-slate-100 flex justify-between items-center hover:border-blue-200 transition-all">
-                        <div class="space-y-1">
+                        <div class="space-y-1 text-left">
                             <p class="font-black text-slate-900 text-lg">실소유자가 대표자입니까?</p>
                             <p class="text-xs font-medium text-slate-400">지분 및 관리 기준</p>
                         </div>
@@ -152,7 +152,7 @@
                         </label>
                     </div>
                     <div class="p-6 rounded-[2.5rem] border-2 border-slate-100 flex justify-between items-center hover:border-purple-200 transition-all">
-                        <div class="space-y-1">
+                        <div class="space-y-1 text-left">
                             <p class="font-black text-slate-900 text-lg">대리인 신청인가요?</p>
                             <p class="text-xs font-medium text-slate-400">대표자 직접 신청이 아닐 경우</p>
                         </div>
@@ -164,11 +164,11 @@
                 </div>
 
                 <!-- [토글] 실소유자 확인서 -->
-                <div id="actualOwnerSection" class="hidden-section reveal">
-                    <div class="bg-blue-50 border-2 border-blue-100 rounded-[3rem] p-10 space-y-8">
-                        <p class="text-blue-900 text-sm md:text-lg font-black break-keep text-left">※ 대표자가 실제 소유자가 아닌 경우 <span class="underline decoration-blue-400 text-left">고객거래확인서</span>를 제출해 주세요.</p>
+                <div id="actualOwnerSection" class="hidden-section reveal text-left">
+                    <div class="bg-blue-50 border-2 border-blue-100 rounded-[3rem] p-10 space-y-8 text-left">
+                        <p class="text-blue-900 text-sm md:text-lg font-black break-keep text-left font-black">※ 대표자가 실제 소유자가 아닌 경우 <span class="underline decoration-blue-400 text-left">고객거래확인서</span>를 제출해 주세요.</p>
                         <div class="flex flex-col md:flex-row gap-6 items-center">
-                            <a href="../Attached file/nonprofit_owner_confirm.pdf" download class="w-full md:w-auto px-8 py-5 bg-white text-slate-900 rounded-2xl font-black text-lg active-scale flex items-center justify-between gap-4">양식 받기 <span class="bg-blue-600 text-white text-[10px] px-2 py-1 rounded">PDF</span></a>
+                            <a href="../Attached file/nonprofit_owner_confirm.pdf" download class="w-full md:w-auto px-8 py-5 bg-white text-slate-900 rounded-2xl font-black text-lg active-scale flex items-center justify-between gap-4 text-left">양식 받기 <span class="bg-blue-600 text-white text-[10px] px-2 py-1 rounded text-left">PDF</span></a>
                             <div class="w-full flex-1">
                                 <div class="attach-container" data-id="doc-owner-confirm" data-label="고객거래확인서" data-label-class="text-slate-900" data-guide="고객거래확인서의 모든 내용이 선명하게 보이도록 촬영해주세요"></div>
                             </div>
@@ -177,11 +177,11 @@
                 </div>
 
                 <!-- [토글] 대리인 위임장 -->
-                <div id="delegateSection" class="hidden-section reveal">
-                    <div class="bg-purple-50 border-2 border-purple-100 rounded-[3rem] p-10 space-y-8">
-                        <p class="text-purple-900 text-sm md:text-lg font-black break-keep text-left">※ 대리인 신청 시 <span class="underline decoration-purple-400 text-left">위임장 및 대리인 신분증</span>이 필요합니다.</p>
+                <div id="delegateSection" class="hidden-section reveal text-left">
+                    <div class="bg-purple-50 border-2 border-purple-100 rounded-[3rem] p-10 space-y-8 text-left">
+                        <p class="text-purple-900 text-sm md:text-lg font-black break-keep text-left font-black">※ 대리인 신청 시 <span class="underline decoration-purple-400 text-left">위임장 및 대리인 신분증</span>이 필요합니다.</p>
                         <div class="flex flex-col md:flex-row gap-6 items-center">
-                            <a href="../Attached file/nonprofit_delegate.pdf" download class="w-full md:w-auto px-8 py-5 bg-white text-slate-900 rounded-2xl font-black text-lg active-scale flex items-center justify-between gap-4">위임장 양식 받기 <span class="bg-purple-600 text-white text-[10px] px-2 py-1 rounded">PDF</span></a>
+                            <a href="../Attached file/nonprofit_delegate.pdf" download class="w-full md:w-auto px-8 py-5 bg-white text-slate-900 rounded-2xl font-black text-lg active-scale flex items-center justify-between gap-4 text-left">양식 받기 <span class="bg-purple-600 text-white text-[10px] px-2 py-1 rounded text-left">PDF</span></a>
                             <div class="w-full flex-1">
                                 <div class="attach-container" data-id="doc-delegate" data-label="대리인 위임장" data-label-class="text-slate-900" data-guide="위임장 전체와 인감이 잘 보이도록 촬영해주세요"></div>
                             </div>
@@ -217,7 +217,7 @@
                 <div class="space-y-16">
                     <!-- 외부 -->
                     <div class="space-y-8">
-                        <h3 class="text-xl font-black text-blue-600 flex items-center gap-2">
+                        <h3 class="text-xl font-black text-blue-600 flex items-center gap-2 text-left">
                             <span class="w-2 h-6 bg-blue-600 rounded-full"></span> 매장 외부 촬영 (가이드)
                         </h3>
                         <div class="grid grid-cols-1 gap-6">
@@ -290,13 +290,13 @@
 
             <!-- Submission Area -->
             <section class="space-y-8 pb-24">
-                <label id="agreeLabel" class="flex items-start gap-4 p-8 bg-slate-50 rounded-[2.5rem] border-2 border-slate-100 cursor-pointer active-scale transition-all hover:bg-slate-100/50">
+                <label id="agreeLabel" class="flex items-start gap-4 p-8 bg-slate-50 rounded-[2.5rem] border-2 border-slate-100 cursor-pointer active-scale transition-all hover:bg-slate-100/50 text-slate-600">
                     <input type="checkbox" id="policyAgree" required class="mt-1 w-6 h-6 rounded-lg border-slate-300 text-primary focus:ring-primary/20 transition-all shrink-0">
                     <span class="text-base md:text-lg font-bold text-slate-600 leading-snug break-keep text-left">
-                        가이드 설명대로 촬영이 안 되었을 경우 <span class="text-primary font-black underline decoration-primary/30 text-left text-left">심사가 지연될 수 있음</span>을 확인하였으며 이에 동의합니다.
+                        가이드 설명대로 촬영이 안 되었을 경우 <span class="text-slate-900 font-black underline decoration-slate-300">심사가 지연될 수 있음</span>을 확인하였으며 이에 동의합니다.
                     </span>
                 </label>
-                <button type="submit" id="submitAction" disabled class="w-full py-5 md:py-6 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-2xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200">
+                <button type="submit" id="submitAction" disabled class="w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200">
                     비영리단체 신청 완료하기
                 </button>
             </section>
@@ -405,29 +405,29 @@
 
                 container.innerHTML = `
                     <div class="flex flex-col gap-3">
-                        <label class="text-sm md:text-lg font-black uppercase tracking-tight ${labelClass} ml-1 text-left text-left text-left">${label}</label>
+                        <label class="text-sm md:text-lg font-black uppercase tracking-tight ${labelClass} ml-1 text-left">${label}</label>
                         <div class="btn-grid grid grid-cols-2 gap-3">
-                            <div class="camera-btn p-4 bg-slate-50 border-2 border-slate-100 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm text-left text-left text-left text-left">
-                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-left text-left text-left text-left">
-                                    <svg class="w-5 h-5 text-left text-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <div class="camera-btn p-4 bg-slate-50 border-2 border-slate-100 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm text-left">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-left">
+                                    <svg class="w-5 h-5 text-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                                 </div>
-                                <span class="text-blue-700 font-black text-xs text-left text-left text-left text-left">사진 촬영</span>
+                                <span class="text-blue-700 font-black text-xs text-left">사진 촬영</span>
                             </div>
-                            <div class="album-btn p-4 bg-white border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm text-left text-left text-left text-left">
+                            <div class="album-btn p-4 bg-white border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm text-left">
                                 <input type="file" id="${id}" class="hidden" accept="image/*,.pdf">
-                                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 text-left text-left text-left text-left text-left">
+                                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 text-left">
                                     <svg class="w-5 h-5 text-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                 </div>
-                                <span class="text-slate-600 font-black text-xs text-left text-left text-left text-left text-left">앨범 선택</span>
+                                <span class="text-slate-600 font-black text-xs text-left">앨범 선택</span>
                             </div>
                         </div>
-                        <div class="preview-area hidden animate-slide-down text-left text-left text-left">
-                            <div class="relative bg-slate-100 rounded-3xl overflow-hidden border-2 border-blue-500 shadow-2xl text-left text-left text-left">
-                                <img class="img-preview w-full h-48 object-cover text-left text-left text-left">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5 text-left text-left text-left">
-                                    <div class="flex justify-between items-center text-left text-left text-left">
-                                        <p class="text-white font-black text-sm text-left text-left text-left">${label}</p>
-                                        <button type="button" class="reset-btn px-4 py-2 bg-red-500 text-white rounded-xl font-black text-xs active-scale text-left text-left text-left">초기화</button>
+                        <div class="preview-area hidden animate-slide-down text-left">
+                            <div class="relative bg-slate-100 rounded-3xl overflow-hidden border-2 border-blue-500 shadow-2xl text-left">
+                                <img class="img-preview w-full h-48 object-cover text-left">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5 text-left">
+                                    <div class="flex justify-between items-center text-left">
+                                        <p class="text-white font-black text-sm text-left">${label}</p>
+                                        <button type="button" class="reset-btn px-4 py-2 bg-red-500 text-white rounded-xl font-black text-xs active-scale text-left">초기화</button>
                                     </div>
                                 </div>
                             </div>
@@ -465,15 +465,18 @@
             document.getElementById('policyAgree').addEventListener('change', (e) => {
                 const btn = document.getElementById('submitAction');
                 const label = document.getElementById('agreeLabel');
+                const textSpan = label.querySelector('span');
                 const isChecked = e.target.checked;
                 
                 btn.disabled = !isChecked;
                 if (isChecked) {
-                    btn.className = "w-full py-5 md:py-6 bg-primary text-white rounded-2xl md:rounded-3xl font-black text-lg md:text-2xl shadow-2xl active-scale transition-all uppercase tracking-widest border-none";
-                    label.classList.add('bg-primary/5', 'border-primary/20');
+                    btn.className = "w-full py-4 md:py-5 bg-primary text-white rounded-2xl md:rounded-3xl font-black text-lg md:text-xl shadow-2xl active-scale transition-all uppercase tracking-widest border-none";
+                    label.className = "flex items-start gap-4 p-8 bg-slate-900 rounded-[2.5rem] border-2 border-slate-900 cursor-pointer active-scale transition-all text-white";
+                    textSpan.className = "text-base md:text-lg font-bold text-white leading-snug break-keep text-left";
                 } else {
-                    btn.className = "w-full py-5 md:py-6 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-2xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200";
-                    label.classList.remove('bg-primary/5', 'border-primary/20');
+                    btn.className = "w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200";
+                    label.className = "flex items-start gap-4 p-8 bg-slate-50 rounded-[2.5rem] border-2 border-slate-100 cursor-pointer active-scale transition-all hover:bg-slate-100/50 text-slate-600";
+                    textSpan.className = "text-base md:text-lg font-bold text-slate-600 leading-snug break-keep text-left";
                 }
             });
 
