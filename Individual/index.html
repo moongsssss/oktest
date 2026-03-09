@@ -521,15 +521,13 @@
                 }
             });
 
-            // Re-attach and Delete buttons
-            bizRegPreviewContainer.querySelector('.re-attach-btn').addEventListener('click', () => {
-                bizRegInput.click();
-            });
-            bizRegPreviewContainer.querySelector('.delete-attachment-btn').addEventListener('click', () => {
-                if(confirm('첨부된 사진을 삭제하시겠습니까?')) {
+            // Delete (Reset) button
+            const deleteBtn = bizRegPreviewContainer.querySelector('.delete-attachment-btn');
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', () => {
                     hideBizRegPreview();
-                }
-            });
+                });
+            }
 
             const isJointRep = document.getElementById('isJointRep');
             const jointRepSection = document.getElementById('jointRepSection');
