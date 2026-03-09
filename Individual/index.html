@@ -504,10 +504,11 @@
                 const id = container.getAttribute('data-id');
                 const label = container.getAttribute('data-label');
                 const guide = container.getAttribute('data-guide');
+                const labelClass = container.getAttribute('data-label-class') || 'text-slate-900';
 
                 container.innerHTML = `
                     <div class="flex flex-col gap-2">
-                        <div class="text-[11px] md:text-xs font-black text-slate-500 uppercase tracking-tighter opacity-80 mb-[-4px] ml-1">${label} 첨부</div>
+                        <div class="text-xs md:text-sm font-black ${labelClass} uppercase tracking-tight mb-[-2px] ml-1">${label}</div>
                         <div class="button-grid grid grid-cols-2 gap-2 md:gap-4">
                             <div class="camera-btn border-2 border-blue-200 bg-blue-50 rounded-2xl md:rounded-[2rem] p-2 md:p-4 flex flex-col items-center justify-center gap-1.5 md:gap-3 cursor-pointer active-scale transition-all hover:border-blue-500 hover:bg-blue-100 shadow-sm">
                                 <div class="w-7 h-7 md:w-12 md:h-12 bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg shadow-blue-200 shrink-0">
@@ -531,7 +532,7 @@
                                         <div class="space-y-0 md:space-y-1">
                                             <div class="flex items-center gap-1.5 md:gap-2">
                                                 <span class="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-400 rounded-full animate-pulse"></span>
-                                                <span class="text-white font-black text-[9px] md:text-sm uppercase tracking-widest opacity-80">Uploaded</span>
+                                                <span class="text-white font-black text-[9px] md:text-sm uppercase tracking-widest">Uploaded</span>
                                             </div>
                                             <p class="text-white font-black text-sm md:text-2xl leading-none">${label}</p>
                                         </div>
