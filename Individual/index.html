@@ -7,20 +7,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2b5b",
+                        "primary-dark": "#c21841",
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root { --primary: #ee2b5b; --primary-hover: #d41d4b; }
         body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; background-color: #f8fafc; color: #1e293b; }
-        .required-mark::after { content: ' *'; color: var(--primary); font-weight: bold; }
+        .required-mark::after { content: ' *'; color: #ee2b5b; font-weight: bold; }
         .active-scale:active { transform: scale(0.98); transition: transform 0.1s; }
         .input-focus:focus { border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
         .hidden-section { display: none; }
         .reveal { animation: revealUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         @keyframes revealUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        /* Camera Modal */
         #cameraModal { display: none; position: fixed; inset: 0; background: #000; z-index: 1000; flex-direction: column; align-items: center; justify-content: center; }
         #cameraPreview { width: 100%; height: 100%; object-fit: cover; }
         .camera-guide { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; height: 65%; border: 3px dashed rgba(255, 255, 255, 0.8); border-radius: 24px; pointer-events: none; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6); }
@@ -38,7 +47,7 @@
                 <p id="cameraGuideText" class="text-white text-xl md:text-2xl font-black drop-shadow-lg leading-relaxed"></p>
             </div>
             <div class="flex justify-between items-center px-10 pb-10 pointer-events-auto">
-                <button type="button" id="closeCamera" class="text-white font-bold text-lg px-6 py-3 rounded-full bg-black/40 backdrop-blur-md text-left">닫기</button>
+                <button type="button" id="closeCamera" class="text-white font-bold text-lg px-6 py-3 rounded-full bg-black/40 backdrop-blur-md">닫기</button>
                 <button type="button" id="capturePhoto" class="capture-btn shadow-2xl active-scale"></button>
                 <div class="w-20"></div>
             </div>
@@ -99,11 +108,11 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <div class="group space-y-3">
+                    <div class="group space-y-3 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">가맹점 상호명</label>
                         <input type="text" name="storeName" required placeholder="매장 간판 이름을 입력하세요" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition-all font-bold text-lg input-focus">
                     </div>
-                    <div class="group space-y-3">
+                    <div class="group space-y-3 text-left">
                         <div class="flex justify-between items-center">
                             <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">사업자 등록 번호</label>
                             <label class="flex items-center gap-2 cursor-pointer group/chk">
@@ -113,7 +122,7 @@
                         </div>
                         <input type="tel" id="bizNumber" name="bizNumber" required pattern="[0-9]{10}" placeholder="숫자 10자리 입력" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition-all font-bold text-lg input-focus">
                     </div>
-                    <div class="md:col-span-2 group space-y-3">
+                    <div class="md:col-span-2 group space-y-3 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">매장 주소</label>
                         <div class="flex flex-col md:flex-row gap-4">
                             <input type="text" id="address" name="address" required readonly onclick="execDaumPostcode()" placeholder="주소 검색을 눌러주세요" class="flex-1 p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg cursor-pointer">
@@ -121,7 +130,7 @@
                         </div>
                         <input type="text" id="addressDetail" name="addressDetail" placeholder="상세 주소를 입력하세요 (층, 호수 등)" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg input-focus">
                     </div>
-                    <div class="group space-y-3">
+                    <div class="group space-y-3 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">매장 연락처</label>
                         <input type="tel" name="storeContact" required placeholder="02-000-0000" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg input-focus">
                     </div>
@@ -136,15 +145,15 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <div class="group space-y-3">
+                    <div class="group space-y-3 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">대표자 성함</label>
                         <input type="text" name="ownerName" required placeholder="실명 기입" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg input-focus">
                     </div>
-                    <div class="group space-y-3">
+                    <div class="group space-y-3 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">휴대폰 번호</label>
                         <input type="tel" name="ownerPhone" required placeholder="010-0000-0000" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg input-focus">
                     </div>
-                    <div class="group space-y-3 md:col-span-2">
+                    <div class="group space-y-3 md:col-span-2 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">이메일 주소</label>
                         <input type="email" name="ownerEmail" required placeholder="example@email.com" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg input-focus">
                     </div>
@@ -321,7 +330,7 @@
                         가이드 설명대로 촬영이 안 되었을 경우 <span class="text-slate-900 font-black underline decoration-slate-300">심사가 지연될 수 있음</span>을 확인하였으며 이에 동의합니다.
                     </span>
                 </label>
-                <button type="submit" id="submitAction" disabled class="w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200">
+                <button type="submit" id="submitAction" disabled class="w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200 shadow-sm">
                     신청 완료하기
                 </button>
             </section>
@@ -495,19 +504,12 @@
 
             document.getElementById('policyAgree').addEventListener('change', (e) => {
                 const btn = document.getElementById('submitAction');
-                const label = document.getElementById('agreeLabel');
-                const textSpan = label.querySelector('span');
                 const isChecked = e.target.checked;
-                
                 btn.disabled = !isChecked;
                 if (isChecked) {
                     btn.className = "w-full py-4 md:py-5 bg-primary text-white rounded-2xl md:rounded-3xl font-black text-lg md:text-xl shadow-2xl active-scale transition-all uppercase tracking-widest border-none";
-                    label.className = "flex items-start gap-4 p-8 bg-slate-900 rounded-[2.5rem] border-2 border-slate-900 cursor-pointer active-scale transition-all text-white";
-                    textSpan.className = "text-base md:text-lg font-bold text-white leading-snug break-keep text-left";
                 } else {
-                    btn.className = "w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200";
-                    label.className = "flex items-start gap-4 p-8 bg-slate-50 rounded-[2.5rem] border-2 border-slate-100 cursor-pointer active-scale transition-all hover:bg-slate-100/50 text-slate-600";
-                    textSpan.className = "text-base md:text-lg font-bold text-slate-600 leading-snug break-keep text-left";
+                    btn.className = "w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200 shadow-sm";
                 }
             });
 

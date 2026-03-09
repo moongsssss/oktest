@@ -7,20 +7,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2b5b",
+                        "primary-dark": "#c21841",
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root { --primary: #ee2b5b; --primary-hover: #d41d4b; }
         body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; background-color: #f8fafc; color: #1e293b; }
-        .required-mark::after { content: ' *'; color: var(--primary); font-weight: bold; }
+        .required-mark::after { content: ' *'; color: #ee2b5b; font-weight: bold; }
         .active-scale:active { transform: scale(0.98); transition: transform 0.1s; }
         .input-focus:focus { border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
         .hidden-section { display: none; }
         .reveal { animation: revealUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
         @keyframes revealUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f5f9; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        /* Camera Modal */
         #cameraModal { display: none; position: fixed; inset: 0; background: #000; z-index: 1000; flex-direction: column; align-items: center; justify-content: center; }
         #cameraPreview { width: 100%; height: 100%; object-fit: cover; }
         .camera-guide { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; height: 65%; border: 3px dashed rgba(255, 255, 255, 0.8); border-radius: 24px; pointer-events: none; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6); }
@@ -38,7 +47,7 @@
                 <p id="cameraGuideText" class="text-white text-xl md:text-2xl font-black drop-shadow-lg leading-relaxed"></p>
             </div>
             <div class="flex justify-between items-center px-10 pb-10 pointer-events-auto">
-                <button type="button" id="closeCamera" class="text-white font-bold text-lg px-6 py-3 rounded-full bg-black/40 backdrop-blur-md text-left">닫기</button>
+                <button type="button" id="closeCamera" class="text-white font-bold text-lg px-6 py-3 rounded-full bg-black/40 backdrop-blur-md">닫기</button>
                 <button type="button" id="capturePhoto" class="capture-btn shadow-2xl active-scale"></button>
                 <div class="w-20"></div>
             </div>
@@ -64,7 +73,7 @@
         
         <!-- Navbar -->
         <header class="sticky top-0 bg-white/80 backdrop-blur-xl z-50 px-6 md:px-12 py-5 md:py-6 border-b border-slate-100 flex justify-between items-center">
-            <div class="flex flex-col">
+            <div class="flex flex-col text-left">
                 <span class="text-[10px] font-black text-primary uppercase tracking-[0.2em] leading-none mb-1">OKPOS Portal</span>
                 <h1 class="text-lg md:text-xl font-black tracking-tight text-slate-900">법인사업자 가맹 신청</h1>
             </div>
@@ -85,8 +94,8 @@
                             <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                             <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-300">Corporation Audit</span>
                         </div>
-                        <h2 class="text-3xl md:text-5xl font-black leading-tight break-keep text-left">법인 전용 서류 준비로<br><span class="text-primary text-left">당일 신청접수</span>를 시작하세요.</h2>
-                        <p class="text-slate-400 text-sm md:text-lg font-medium leading-relaxed">사업자 범용 공인인증서와 법인 필수 서류를 가이드에 맞춰 준비해 주세요.</p>
+                        <h2 class="text-3xl md:text-5xl font-black leading-tight break-keep text-left text-left">법인 전용 서류 준비로<br><span class="text-primary text-left">당일 신청접수</span>를 시작하세요.</h2>
+                        <p class="text-slate-400 text-sm md:text-lg max-w-xl font-medium leading-relaxed text-left text-left">사업자 범용 공인인증서와 법인 필수 서류를 가이드에 맞춰 준비해 주세요.</p>
                     </div>
                 </div>
             </section>
@@ -98,16 +107,16 @@
                     <span class="text-slate-400 text-sm md:text-base font-bold mb-1">Corporate Info</span>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                    <div class="group space-y-3">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 text-left text-left">
+                    <div class="group space-y-3 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">법인명 (상호)</label>
                         <input type="text" name="storeName" required placeholder="법인 상호를 입력하세요" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition-all font-bold text-lg input-focus">
                     </div>
-                    <div class="group space-y-3">
+                    <div class="group space-y-3 text-left text-left text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">사업자 등록 번호</label>
                         <input type="tel" name="bizNumber" required pattern="[0-9]{10}" placeholder="숫자 10자리 입력" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-500 focus:bg-white transition-all font-bold text-lg input-focus">
                     </div>
-                    <div class="md:col-span-2 group space-y-3">
+                    <div class="md:col-span-2 group space-y-3 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">법인 소재지</label>
                         <div class="flex flex-col md:flex-row gap-4">
                             <input type="text" id="address" name="address" required readonly onclick="execDaumPostcode()" placeholder="주소 검색을 눌러주세요" class="flex-1 p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg cursor-pointer">
@@ -115,7 +124,7 @@
                         </div>
                         <input type="text" id="addressDetail" name="addressDetail" placeholder="상세 주소를 입력하세요" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg input-focus">
                     </div>
-                    <div class="group space-y-3">
+                    <div class="group space-y-3 text-left">
                         <label class="text-xs md:text-sm font-black text-slate-500 uppercase tracking-widest required-mark">법인 대표 연락처</label>
                         <input type="tel" name="storeContact" required placeholder="02-000-0000" class="w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl font-bold text-lg input-focus">
                     </div>
@@ -141,7 +150,7 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
-                    <div class="p-6 rounded-[2.5rem] border-2 border-slate-100 flex justify-between items-center hover:border-blue-200 transition-all">
+                    <div class="p-6 rounded-[2.5rem] border-2 border-slate-100 flex justify-between items-center hover:border-blue-200 transition-all text-left">
                         <div class="space-y-1 text-left">
                             <p class="font-black text-slate-900 text-lg">실소유자가 대표자입니까?</p>
                             <p class="text-xs font-medium text-slate-400">지분 25% 이상 보유 기준</p>
@@ -151,7 +160,7 @@
                             <div class="w-12 h-6 bg-slate-200 rounded-full peer peer-checked:bg-blue-600 peer-checked:after:translate-x-6 after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all shadow-inner"></div>
                         </label>
                     </div>
-                    <div class="p-6 rounded-[2.5rem] border-2 border-slate-100 flex justify-between items-center hover:border-orange-200 transition-all">
+                    <div class="p-6 rounded-[2.5rem] border-2 border-slate-100 flex justify-between items-center hover:border-orange-200 transition-all text-left">
                         <div class="space-y-1 text-left">
                             <p class="font-black text-slate-900 text-lg">사용인감을 사용하시나요?</p>
                             <p class="text-xs font-medium text-slate-400">법인인감 대신 사용 시 체크</p>
@@ -165,10 +174,10 @@
 
                 <!-- [토글] 실소유자 확인서 -->
                 <div id="actualOwnerSection" class="hidden-section reveal">
-                    <div class="bg-blue-50 border-2 border-blue-100 rounded-[3rem] p-10 space-y-8">
-                        <p class="text-blue-900 text-sm md:text-lg font-black break-keep text-left">※ 대표자가 실제 소유자가 아닌 경우 <span class="underline decoration-blue-400">고객거래확인서</span>를 제출해 주세요.</p>
+                    <div class="bg-blue-50 border-2 border-blue-100 rounded-[3rem] p-10 space-y-8 text-left">
+                        <p class="text-blue-900 text-sm md:text-lg font-black break-keep text-left font-black">※ 대표자가 실제 소유자가 아닌 경우 <span class="underline decoration-blue-400 text-left">고객거래확인서</span>를 제출해 주세요.</p>
                         <div class="flex flex-col md:flex-row gap-6 items-center">
-                            <a href="../Attached file/customer_verify.pdf" download class="w-full md:w-auto px-8 py-5 bg-white text-slate-900 rounded-2xl font-black text-lg active-scale flex items-center justify-between gap-4">양식 받기 <span class="bg-blue-600 text-white text-[10px] px-2 py-1 rounded">PDF</span></a>
+                            <a href="../Attached file/customer_verify.pdf" download class="w-full md:w-auto px-8 py-5 bg-white text-slate-900 rounded-2xl font-black text-lg active-scale flex items-center justify-between gap-4 text-left">양식 받기 <span class="bg-blue-600 text-white text-[10px] px-2 py-1 rounded text-left">PDF</span></a>
                             <div class="w-full flex-1">
                                 <div class="attach-container" data-id="doc-customer-verify" data-label="고객거래확인서" data-label-class="text-slate-900" data-guide="고객거래확인서의 모든 항목과 날인이 보이도록 촬영해주세요"></div>
                             </div>
@@ -178,10 +187,10 @@
 
                 <!-- [토글] 사용인감계 -->
                 <div id="useSealSection" class="hidden-section reveal">
-                    <div class="bg-orange-50 border-2 border-orange-100 rounded-[3rem] p-10 space-y-8">
-                        <p class="text-orange-900 text-sm md:text-lg font-black break-keep text-left">※ 사용인감 사용 시 <span class="underline decoration-orange-400">사용인감계</span> 제출이 필수입니다.</p>
-                        <div class="flex flex-col md:flex-row gap-6 items-center">
-                            <a href="../Attached file/use_seal_certificate.jpg" download class="w-full md:w-auto px-8 py-5 bg-white text-slate-900 rounded-2xl font-black text-lg active-scale flex items-center justify-between gap-4">양식 받기 <span class="bg-orange-600 text-white text-[10px] px-2 py-1 rounded">JPG</span></a>
+                    <div class="bg-orange-50 border-2 border-orange-100 rounded-[3rem] p-10 space-y-8 text-left">
+                        <p class="text-orange-900 text-sm md:text-lg font-black break-keep text-left font-black">※ 사용인감 사용 시 <span class="underline decoration-orange-400 text-left">사용인감계</span> 제출이 필수입니다.</p>
+                        <div class="flex flex-col md:flex-row gap-6 items-center text-left">
+                            <a href="../Attached file/use_seal_certificate.jpg" download class="w-full md:w-auto px-8 py-5 bg-white text-slate-900 rounded-2xl font-black text-lg active-scale flex items-center justify-between gap-4 text-left">양식 받기 <span class="bg-orange-600 text-white text-[10px] px-2 py-1 rounded text-left">JPG</span></a>
                             <div class="w-full flex-1">
                                 <div class="attach-container" data-id="doc-use-seal" data-label="사용인감계" data-label-class="text-slate-900" data-guide="사용인감계의 인감들이 선명하게 보이도록 촬영해주세요"></div>
                             </div>
@@ -211,7 +220,7 @@
             <section class="space-y-12">
                 <div class="flex items-end gap-3 border-b-2 border-slate-900 pb-4">
                     <h2 class="text-2xl md:text-3xl font-black text-slate-900 uppercase">매장 사진 첨부</h2>
-                    <span class="text-slate-400 text-sm md:text-base font-bold mb-1">Store Photos</span>
+                    <span class="text-slate-400 text-sm md:text-base font-bold mb-1 text-left">Store Photos</span>
                 </div>
 
                 <div class="space-y-16">
@@ -224,27 +233,27 @@
                             <!-- 외부 01 -->
                             <div class="p-8 bg-blue-50 border-2 border-blue-100 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-start md:items-center">
                                 <div class="flex-1 space-y-3 text-left">
-                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg">외부 01</div>
+                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg text-left">외부 01</div>
                                     <h4 class="text-xl font-black text-slate-900 text-left">매장 외부 전체 전경</h4>
-                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">입구와 건물 전체가 나오도록 <span class="text-blue-600 font-bold underline">멀리서 최대한 넓게</span> 촬영해 주세요.</p>
+                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">입구와 건물 전체가 나오도록 <span class="text-blue-600 font-bold underline text-left">멀리서 최대한 넓게</span> 촬영해 주세요.</p>
                                 </div>
                                 <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-out-1" data-label="외부 전경" data-guide="매장 입구와 건물 전체가 멀리서 넓게 보이도록 촬영해주세요"></div>
                             </div>
                             <!-- 외부 02 -->
                             <div class="p-8 bg-blue-50 border-2 border-blue-100 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-start md:items-center">
                                 <div class="flex-1 space-y-3 text-left">
-                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg">외부 02</div>
+                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg text-left">외부 02</div>
                                     <h4 class="text-xl font-black text-slate-900 text-left">매장 간판 사진</h4>
-                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">매장 상호가 적힌 <span class="text-blue-600 font-bold underline">간판이 선명하게</span> 보이도록 촬영해 주세요. 간판이 없으면 건물에 부착된 <span class="text-blue-600 font-bold underline">도로명표지판 주소</span>를 촬영해 주세요. (예시 이미지는 포털 검색을 통해 쉽게 확인하실 수 있습니다.)</p>
+                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">매장 상호가 적힌 <span class="text-blue-600 font-bold underline text-left">간판이 선명하게</span> 보이도록 촬영해 주세요. 간판이 없으면 건물에 부착된 <span class="text-blue-600 font-bold underline">도로명표지판 주소</span>를 촬영해 주세요. (예시 이미지는 포털 검색을 통해 쉽게 확인하실 수 있습니다.)</p>
                                 </div>
                                 <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-out-2" data-label="매장 간판" data-guide="매장 간판(또는 도로명주소)이 선명하게 보이도록 촬영해주세요"></div>
                             </div>
                             <!-- 외부 03 -->
                             <div class="p-8 bg-blue-50 border-2 border-blue-100 rounded-[2.5rem] flex flex-col md:flex-row gap-8 items-start md:items-center">
                                 <div class="flex-1 space-y-3 text-left">
-                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg">외부 03</div>
-                                    <h4 class="text-xl font-black text-slate-900 text-left">입구 연결 사진 (문 열고)</h4>
-                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">반드시 <span class="text-blue-600 font-bold underline">출입문을 열고</span>, 문 너머로 매장 내부가 함께 보이도록 촬영해 주세요.</p>
+                                    <div class="inline-block px-3 py-1 bg-blue-600 text-white text-[10px] font-black rounded-lg text-left text-left">외부 03</div>
+                                    <h4 class="text-xl font-black text-slate-900 text-left text-left text-left">입구 연결 사진 (문 열고)</h4>
+                                    <p class="text-slate-500 text-sm font-medium break-keep text-left text-left text-left">반드시 <span class="text-blue-600 font-bold underline text-left">출입문을 열고</span>, 문 너머로 매장 내부가 함께 보이도록 촬영해 주세요.</p>
                                 </div>
                                 <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-out-3" data-label="입구 연결" data-guide="출입문을 열고 매장 내부가 함께 보이도록 촬영해주세요"></div>
                             </div>
@@ -261,7 +270,7 @@
                                 <div class="flex-1 space-y-3 text-left">
                                     <div class="inline-block px-3 py-1 bg-slate-800 text-white text-[10px] font-black rounded-lg text-left">내부 01</div>
                                     <h4 class="text-xl font-black text-slate-900 text-left">매장 내부 전체 전경</h4>
-                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">매장 내부의 전체적인 모습이 <span class="text-slate-900 font-bold underline">넓게 보이도록</span> 촬영해 주세요.</p>
+                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">매장 내부의 전체적인 모습이 <span class="text-slate-900 font-bold underline text-left">넓게 보이도록</span> 촬영해 주세요.</p>
                                 </div>
                                 <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-in-1" data-label="내부 전경" data-guide="매장 내부 전체의 모습이 잘 보이도록 넓게 촬영해주세요"></div>
                             </div>
@@ -270,7 +279,7 @@
                                 <div class="flex-1 space-y-3 text-left">
                                     <div class="inline-block px-3 py-1 bg-slate-800 text-white text-[10px] font-black rounded-lg text-left">내부 02</div>
                                     <h4 class="text-xl font-black text-slate-900 text-left">업종 식별 주요 시설</h4>
-                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">주방, 냉장고, 집기 등 <span class="text-slate-900 font-bold underline">업종을 확인할 수 있는</span> 설비를 촬영해 주세요.</p>
+                                    <p class="text-slate-500 text-sm font-medium break-keep text-left text-left">주방, 냉장고, 집기 등 <span class="text-slate-900 font-bold underline text-left">업종을 확인할 수 있는</span> 설비를 촬영해 주세요.</p>
                                 </div>
                                 <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-in-2" data-label="주요 시설 1" data-guide="업종을 알 수 있는 주요 설비를 촬영해주세요"></div>
                             </div>
@@ -279,7 +288,7 @@
                                 <div class="flex-1 space-y-3 text-left">
                                     <div class="inline-block px-3 py-1 bg-slate-800 text-white text-[10px] font-black rounded-lg text-left">내부 03</div>
                                     <h4 class="text-xl font-black text-slate-900 text-left">추가 시설 사진</h4>
-                                    <p class="text-slate-500 text-sm font-medium break-keep text-left">위 설비들을 <span class="text-slate-900 font-bold underline">다른 각도에서</span> 한 번 더 촬영해 주세요.</p>
+                                    <p class="text-slate-500 text-sm font-medium break-keep text-left text-left text-left">위 설비들을 <span class="text-slate-900 font-bold underline text-left text-left">다른 각도에서</span> 한 번 더 촬영해 주세요.</p>
                                 </div>
                                 <div class="shrink-0 w-full md:w-72 attach-container" data-id="p-in-3" data-label="주요 시설 2" data-guide="시설을 다른 각도에서 한 번 더 촬영해주세요"></div>
                             </div>
@@ -407,7 +416,7 @@
                     <div class="flex flex-col gap-3">
                         <label class="text-sm md:text-lg font-black uppercase tracking-tight ${labelClass} ml-1 text-left">${label}</label>
                         <div class="btn-grid grid grid-cols-2 gap-3">
-                            <div class="camera-btn p-4 bg-slate-50 border-2 border-slate-100 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm text-left">
+                            <div class="camera-btn p-4 bg-slate-50 border-2 border-slate-100 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm text-left text-left">
                                 <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-left">
                                     <svg class="w-5 h-5 text-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                                 </div>
@@ -418,15 +427,15 @@
                                 <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 text-left">
                                     <svg class="w-5 h-5 text-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                 </div>
-                                <span class="text-slate-600 font-black text-xs text-left">앨범 선택</span>
+                                <span class="text-slate-600 font-black text-xs text-left text-left">앨범 선택</span>
                             </div>
                         </div>
                         <div class="preview-area hidden animate-slide-down text-left">
                             <div class="relative bg-slate-100 rounded-3xl overflow-hidden border-2 border-blue-500 shadow-2xl text-left">
-                                <img class="img-preview w-full h-48 object-cover text-left">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5 text-left">
-                                    <div class="flex justify-between items-center text-left">
-                                        <p class="text-white font-black text-sm text-left">${label}</p>
+                                <img class="img-preview w-full h-48 object-cover text-left text-left">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5 text-left text-left">
+                                    <div class="flex justify-between items-center text-left text-left">
+                                        <p class="text-white font-black text-sm text-left text-left">${label}</p>
                                         <button type="button" class="reset-btn px-4 py-2 bg-red-500 text-white rounded-xl font-black text-xs active-scale text-left">초기화</button>
                                     </div>
                                 </div>
@@ -464,19 +473,12 @@
 
             document.getElementById('policyAgree').addEventListener('change', (e) => {
                 const btn = document.getElementById('submitAction');
-                const label = document.getElementById('agreeLabel');
-                const textSpan = label.querySelector('span');
                 const isChecked = e.target.checked;
-                
                 btn.disabled = !isChecked;
                 if (isChecked) {
                     btn.className = "w-full py-4 md:py-5 bg-primary text-white rounded-2xl md:rounded-3xl font-black text-lg md:text-xl shadow-2xl active-scale transition-all uppercase tracking-widest border-none";
-                    label.className = "flex items-start gap-4 p-8 bg-slate-900 rounded-[2.5rem] border-2 border-slate-900 cursor-pointer active-scale transition-all text-white";
-                    textSpan.className = "text-base md:text-lg font-bold text-white leading-snug break-keep text-left";
                 } else {
-                    btn.className = "w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200";
-                    label.className = "flex items-start gap-4 p-8 bg-slate-50 rounded-[2.5rem] border-2 border-slate-100 cursor-pointer active-scale transition-all hover:bg-slate-100/50 text-slate-600";
-                    textSpan.className = "text-base md:text-lg font-bold text-slate-600 leading-snug break-keep text-left";
+                    btn.className = "w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200 shadow-sm";
                 }
             });
 
