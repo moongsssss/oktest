@@ -1,56 +1,134 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OKPOS 가맹점 신청 선택</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; }
-        .active-scale:active { transform: scale(0.95); transition: transform 0.1s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .fade-in { animation: fadeIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
-    </style>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2b5b",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221015",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>OKPOS 가맹점 서류 제출</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
 </head>
-<body class="bg-slate-900 min-h-screen flex items-center justify-center p-6">
-
-    <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 fade-in">
-        
-        <!-- 개인사업자 선택 카드 -->
-        <a href="./Individual/index.html" class="group relative bg-white rounded-[2.5rem] p-8 md:p-10 flex flex-col items-center text-center transition-all hover:shadow-[0_0_50px_rgba(59,130,246,0.3)] hover:-translate-y-2 active-scale overflow-hidden">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-700"></div>
-            <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-            </div>
-            <h2 class="text-2xl md:text-3xl font-black text-slate-900 mb-3">개인사업자</h2>
-            <p class="text-slate-500 text-sm md:text-base font-medium break-keep">대표자 본인이 직접 운영하는<br>개인 사업자 전용 신청 폼</p>
-            <div class="mt-8 px-6 py-3 bg-blue-600 text-white font-black rounded-xl shadow-lg shadow-blue-200 text-sm">신청하기 ➔</div>
-        </a>
-
-        <!-- 법인사업자 선택 카드 -->
-        <a href="./Corporation/index.html" class="group relative bg-slate-800 rounded-[2.5rem] p-8 md:p-10 flex flex-col items-center text-center transition-all hover:shadow-[0_0_50px_rgba(255,255,255,0.1)] hover:-translate-y-2 active-scale overflow-hidden border border-slate-700">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-700"></div>
-            <div class="w-16 h-16 bg-slate-700 text-slate-300 rounded-2xl flex items-center justify-center mb-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-            </div>
-            <h2 class="text-2xl md:text-3xl font-black text-white mb-3">법인사업자</h2>
-            <p class="text-slate-400 text-sm md:text-base font-medium break-keep">법인 등기가 완료된<br>법인 사업체 전용 신청 폼</p>
-            <div class="mt-8 px-6 py-3 bg-white text-slate-900 font-black rounded-xl shadow-lg text-sm">신청하기 ➔</div>
-        </a>
-
-        <!-- 비영리단체 선택 카드 -->
-        <a href="./project비영리단체/index.html" class="group relative bg-indigo-900 rounded-[2.5rem] p-8 md:p-10 flex flex-col items-center text-center transition-all hover:shadow-[0_0_50px_rgba(99,102,241,0.3)] hover:-translate-y-2 active-scale overflow-hidden border border-indigo-800">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -mr-8 -mt-8 transition-transform group-hover:scale-150 duration-700"></div>
-            <div class="w-16 h-16 bg-indigo-800 text-indigo-300 rounded-2xl flex items-center justify-center mb-6">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-            </div>
-            <h2 class="text-2xl md:text-3xl font-black text-white mb-3">비영리단체</h2>
-            <p class="text-indigo-200/70 text-sm md:text-base font-medium break-keep">고유번호증을 보유한<br>협회, 종교단체 등 전용 신청 폼</p>
-            <div class="mt-8 px-6 py-3 bg-indigo-500 text-white font-black rounded-xl shadow-lg text-sm">신청하기 ➔</div>
-        </a>
-
-    </div>
-
-</body>
-</html>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl overflow-hidden text-left">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex items-center bg-white/80 dark:bg-background-dark/80 backdrop-blur-md p-4 justify-between border-b border-slate-100 dark:border-slate-800 text-left">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-base font-bold leading-tight tracking-tight flex-1 text-center font-black">가맹점 서류 제출 안내</h1>
+<div class="flex size-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-full text-slate-900 dark:text-slate-100">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto px-4 pb-24 text-left">
+<div class="pt-6 pb-4 text-left">
+<h2 class="text-slate-900 dark:text-slate-100 tracking-tight text-2xl font-extrabold leading-tight text-left">신청 시작하기</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mt-1 text-left">사업자 유형을 선택하여 계속 진행해 주세요.</p>
+</div>
+<div class="space-y-4 text-left">
+<!-- Individual Business Card -->
+<div class="group relative flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-all text-left">
+<div class="flex flex-col gap-3 flex-1 text-left">
+<div class="flex flex-col gap-0.5 text-left">
+<span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 text-left">개인사업자</span>
+<p class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight text-left">개인</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal leading-snug text-left">1인 기업 및 일반 과세자</p>
+</div>
+<a href="./Individual/index.html" class="flex items-center justify-center rounded-full h-9 px-5 bg-primary text-white gap-2 text-sm font-semibold w-fit transition-transform active:scale-95 text-left">
+<span>신청하기</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 overflow-hidden" data-alt="Professional working on a modern laptop on a wooden desk" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA_jgfrbBfiwgPEBC9HXULINOYp3VrorB20L8TWn8ogniWw35N2ntwtC-Y-SYJlPAbkMWZT8Lo_kNUcv_zM_J0sP5MGDdvIQlnOF0IQehE3dZZhvqwSeZevHdv194eum5hik4UHu9JU7fyVvYStffLpXz2lkMefYMSULH_hqduHkb47_q94tECgSxQilxdbsDQjP6lkooAQhhJEYmcqqGCazJQDTKY10_FGnuTBH_7xf7wfPMF_xrHvYO1ok5oWm21gkwJFq7Temo4');">
+</div>
+</div>
+<!-- Corporate Business Card -->
+<div class="group relative flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-all text-left text-left">
+<div class="flex flex-col gap-3 flex-1 text-left">
+<div class="flex flex-col gap-0.5 text-left">
+<span class="text-[10px] font-bold uppercase tracking-wider text-orange-600 dark:text-orange-400 text-left">법인사업자</span>
+<p class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight text-left">법인</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal leading-snug text-left">국내외 중대형 및 상장 법인</p>
+</div>
+<a href="./Corporation/index.html" class="flex items-center justify-center rounded-full h-9 px-5 bg-slate-900 dark:bg-white dark:text-slate-900 text-white gap-2 text-sm font-semibold w-fit transition-transform active:scale-95 text-left">
+<span>신청하기</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover rounded-lg shrink-0 overflow-hidden" data-alt="Modern minimalist office interior with glass walls" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuANkZKOOM9KGhZO6txPGqShGaXlMWIiukML7ZrSwZ7Lk4fsjSwLrfPdZjM3_PlUrQ60hpD5bAtEMw2H0NoqqW-IIBLyAzxdeohR1r1tkPprTMKr2dPM5H0NxJ0N113r455otmPwrZyJjkKBVXVLErrQq7xkS7eSBVREtCLQOxVYt4l9Tm5Bn_fixuxSTRav7IWat39YmfcRyukgbGcXiPcEvmz6qVwRL93fM2PijT5EGI5gy42rG0c79yhoIq4FL_lFQECtaGF0KY8');">
+</div>
+</div>
+<!-- Non-profit Card -->
+<div class="group relative flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 p-4 shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-md transition-all text-left text-left">
+<div class="flex flex-col gap-3 flex-1 text-left text-left text-left">
+<div class="flex flex-col gap-0.5 text-left">
+<span class="text-[10px] font-bold uppercase tracking-wider text-purple-600 dark:text-purple-400 text-left">비영리단체</span>
+<p class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight text-left">비영리</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs font-normal leading-snug text-left">사회적 기업 및 공공 기관</p>
+</div>
+<a href="./project비영리단체/index.html" class="flex items-center justify-center rounded-full h-9 px-5 bg-primary/10 text-primary gap-2 text-sm font-semibold w-fit transition-transform active:scale-95 text-left text-left">
+<span>신청하기</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="w-24 h-24 bg-center bg-no-repeat bg-cover shrink-0 overflow-hidden rounded-full" data-alt="Group of people collaborating around a table" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkF4sEPByqJWc-HOGtjO_I1S2tomkEn678PUaqt_CDzU7XC0n0EwG0nJvqR2NPBxkTUpq0R8GDn9zXunz1HrutV_vyr2y5KsceFXB4I-fnxNv7AC-n-1lJ-UgsqGMc4F1hafN35dwDLpJpHEZUd5f0phLZuTTKxYvZoprsA3LrrD5u8Zgn6mMAU9t-zpb1NUKvQIvaBKT0b-aU5dFn-3w16DRctTMYTVY2gfK1_undhiwKXS3QLpMXuCon0P0jn6Cke98Dz2bMTFE');">
+</div>
+</div>
+</div>
+<!-- Info Footer Section -->
+<div class="mt-8 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 text-left text-left">
+<div class="flex items-start gap-3 text-left">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<div class="text-left">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100 text-left">안전 및 보안</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 text-left">귀하의 데이터는 암호화되어 비즈니스 확인 목적으로만 사용됩니다.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-md bg-white/90 dark:bg-background-dark/90 backdrop-blur-lg border-t border-slate-100 dark:border-slate-800 pb-safe-area text-left text-left">
+<div class="flex justify-around items-center h-16 px-4 text-left">
+<a class="flex flex-col items-center gap-1 text-primary text-left" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-medium text-left">홈</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors text-left" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="text-[10px] font-medium text-left">내역</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors text-left" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-medium text-left">계정</span>
+</a>
+</div>
+</nav>
+</div>
+</body></html>
