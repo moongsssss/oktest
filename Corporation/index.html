@@ -7,44 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script>
-        function openPhotoGuide() {
-            const popup = document.getElementById('photoGuidePopup');
-            const content = document.getElementById('guideContent');
-            if(popup && content) {
-                popup.classList.remove('hidden');
-                setTimeout(() => content.classList.remove('translate-y-full'), 10);
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        function closePhotoGuide() {
-            const popup = document.getElementById('photoGuidePopup');
-            const content = document.getElementById('guideContent');
-            if(popup && content) {
-                content.classList.add('translate-y-full');
-                document.body.style.overflow = '';
-                setTimeout(() => popup.classList.add('hidden'), 300);
-            }
-        }
-
-        function old_openPhotoGuide() {
-            const popup = document.getElementById('photoGuidePopup');
-            const content = document.getElementById('guideContent');
-            if(popup && content) {
-                popup.classList.remove('hidden');
-                setTimeout(() => content.classList.remove('translate-y-full'), 10);
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        function closePhotoGuide() {
-            const popup = document.getElementById('photoGuidePopup');
-            const content = document.getElementById('guideContent');
-            if(popup && content) {
-                content.classList.add('translate-y-full');
-                document.body.style.overflow = '';
-                setTimeout(() => popup.classList.add('hidden'), 300);
-            }
-        }
 
         tailwind.config = {
             theme: {
@@ -85,54 +47,6 @@
                 <p id="cameraGuideText" class="text-white text-xl md:text-2xl font-black drop-shadow-lg leading-relaxed"></p>
             </div>
     <!-- 촬영 가이드 팝업 -->
-    <div id="photoGuidePopup" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePhotoGuide()"></div>
-        <div class="absolute bottom-0 left-0 right-0 max-w-2xl mx-auto bg-white rounded-t-[3rem] shadow-2xl transform translate-y-full transition-all duration-300 ease-out flex flex-col h-[90vh]" id="guideContent">
-            <!-- Header -->
-            <div class="sticky top-0 bg-white z-10 px-8 pt-8 pb-4 rounded-t-[3rem]">
-                <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-6"></div>
-                <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-2xl font-black text-slate-900 tracking-tight">매장 내/외부 사진 촬영 가이드</h3>
-                    <button onclick="closePhotoGuide()" class="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors">
-                        <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </button>
-                </div>
-                <p class="text-slate-500 font-bold text-sm">카드 가맹점 등록을 위한 필수 서류입니다.</p>
-            </div>
-            <!-- Scrollable Content -->
-            <div class="flex-1 overflow-y-auto px-8 pb-12 custom-scrollbar">
-                <div class="space-y-10">
-                    <div class="p-6 bg-red-50 border-2 border-red-100 rounded-[2rem]">
-                        <h4 class="text-red-600 font-black text-lg mb-2 flex items-center gap-2">가맹 접수 불가 안내</h4>
-                        <p class="text-red-900/80 text-sm font-bold leading-relaxed break-keep">인테리어 진행 중으로 업종 확인이 불가능한 매장 내/외부 사진으로는 카드사 가맹 접수가 어렵습니다.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <h4 class="font-black text-slate-900 text-xl flex items-center gap-2">📌 필독! 사진 촬영 핵심 요약</h4>
-                        <ul class="space-y-3">
-                            <li class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100"><p class="text-slate-600 text-sm font-bold leading-snug">최소 6장의 사진을 넉넉히 첨부해주셔야 안전합니다.</p></li>
-                            <li class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100"><p class="text-slate-600 text-sm font-bold leading-snug">간판 글씨나 판매 물품이 선명하게 보여야 합니다.</p></li>
-                        </ul>
-                    </div>
-                    <div class="space-y-6">
-                        <h4 class="font-black text-slate-900 text-xl">1. 매장 외부 사진</h4>
-                        <div class="space-y-3"><img src="../Store_Examples/외부1.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                        <div class="space-y-3"><img src="../Store_Examples/외부2.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                        <div class="space-y-3"><img src="../Store_Examples/외부1-1 10.56.24.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                    </div>
-                    <div class="space-y-6">
-                        <h4 class="font-black text-slate-900 text-xl">2. 매장 내부 사진</h4>
-                        <div class="space-y-3"><img src="../Store_Examples/내부1.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                        <div class="space-y-3"><img src="../Store_Examples/내부2.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                        <div class="space-y-3"><img src="../Store_Examples/내부3.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-8 bg-white border-t border-slate-100">
-                <button onclick="closePhotoGuide()" class="w-full py-5 bg-slate-900 text-white rounded-[1.5rem] font-black text-lg active:scale-[0.98] transition-all">가이드 확인 완료</button>
-            </div>
-        </div>
-    </div>
-
             <div class="flex justify-between items-center px-10 pb-10 pointer-events-auto">
                 <button type="button" id="closeCamera" class="text-white font-bold text-lg px-6 py-3 rounded-full bg-black/40 backdrop-blur-md text-left text-left">닫기</button>
                 <button type="button" id="capturePhoto" class="capture-btn shadow-2xl active-scale"></button>
@@ -509,31 +423,6 @@
             }
         }
 
-        function old_openPhotoGuide() {
-            const popup = document.getElementById('photoGuidePopup');
-            const content = document.getElementById('guideContent');
-            if(popup && content) {
-                popup.classList.remove('hidden');
-                setTimeout(() => content.classList.remove('translate-y-full'), 10);
-                document.body.style.overflow = 'hidden';
-            }
-        }
-        function closePhotoGuide() {
-            const popup = document.getElementById('photoGuidePopup');
-            const content = document.getElementById('guideContent');
-            if(popup && content) {
-                content.classList.add('translate-y-full');
-                document.body.style.overflow = '';
-                setTimeout(() => popup.classList.add('hidden'), 300);
-            }
-        }
-
-        function execDaumPostcode() {
-            new daum.Postcode({
-                oncomplete: function(data) {
-                    var addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
-                    document.getElementById("address").value = addr;
-                    document.getElementById("addressDetail").focus();
                 }
             }).open();
         }
@@ -703,4 +592,52 @@
         });
     </script>
 </body>
+    <div id="photoGuidePopup" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePhotoGuide()"></div>
+        <div class="absolute bottom-0 left-0 right-0 max-w-2xl mx-auto bg-white rounded-t-[3rem] shadow-2xl transform translate-y-full transition-all duration-300 ease-out flex flex-col h-[90vh]" id="guideContent">
+            <!-- Header -->
+            <div class="sticky top-0 bg-white z-10 px-8 pt-8 pb-4 rounded-t-[3rem]">
+                <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-6"></div>
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-2xl font-black text-slate-900 tracking-tight">매장 내/외부 사진 촬영 가이드</h3>
+                    <button onclick="closePhotoGuide()" class="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors">
+                        <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <p class="text-slate-500 font-bold text-sm">카드 가맹점 등록을 위한 필수 서류입니다.</p>
+            </div>
+            <!-- Scrollable Content -->
+            <div class="flex-1 overflow-y-auto px-8 pb-12 custom-scrollbar">
+                <div class="space-y-10">
+                    <div class="p-6 bg-red-50 border-2 border-red-100 rounded-[2rem]">
+                        <h4 class="text-red-600 font-black text-lg mb-2 flex items-center gap-2">가맹 접수 불가 안내</h4>
+                        <p class="text-red-900/80 text-sm font-bold leading-relaxed break-keep">인테리어 진행 중으로 업종 확인이 불가능한 매장 내/외부 사진으로는 카드사 가맹 접수가 어렵습니다.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <h4 class="font-black text-slate-900 text-xl flex items-center gap-2">📌 필독! 사진 촬영 핵심 요약</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100"><p class="text-slate-600 text-sm font-bold leading-snug">최소 6장의 사진을 넉넉히 첨부해주셔야 안전합니다.</p></li>
+                            <li class="flex items-start gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100"><p class="text-slate-600 text-sm font-bold leading-snug">간판 글씨나 판매 물품이 선명하게 보여야 합니다.</p></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-6">
+                        <h4 class="font-black text-slate-900 text-xl">1. 매장 외부 사진</h4>
+                        <div class="space-y-3"><img src="../Store_Examples/외부1.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                        <div class="space-y-3"><img src="../Store_Examples/외부2.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                        <div class="space-y-3"><img src="../Store_Examples/외부1-1 10.56.24.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                    </div>
+                    <div class="space-y-6">
+                        <h4 class="font-black text-slate-900 text-xl">2. 매장 내부 사진</h4>
+                        <div class="space-y-3"><img src="../Store_Examples/내부1.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                        <div class="space-y-3"><img src="../Store_Examples/내부2.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                        <div class="space-y-3"><img src="../Store_Examples/내부3.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-8 bg-white border-t border-slate-100">
+                <button onclick="closePhotoGuide()" class="w-full py-5 bg-slate-900 text-white rounded-[1.5rem] font-black text-lg active:scale-[0.98] transition-all">가이드 확인 완료</button>
+            </div>
+        </div>
+    </div>
+
 </html>
