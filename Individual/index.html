@@ -438,163 +438,32 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const cameraModal = document.getElementById('cameraModal');
-            const video = document.getElementById('cameraPreview');
-            const captureBtn = document.getElementById('capturePhoto');
-            const closeCameraBtn = document.getElementById('closeCamera');
-            const canvas = document.getElementById('captureCanvas');
-            const previewModal = document.getElementById('capturePreviewModal');
-            const capturedImg = document.getElementById('capturedImage');
-            const retakeBtn = document.getElementById('retakePhoto');
-            const usePhotoBtn = document.getElementById('usePhoto');
-            const cameraGuideText = document.getElementById('cameraGuideText');
-
-            let stream = null;
-            let currentTargetInputId = null;
-
-            const stopStream = () => {
-                if (stream) {
-                    stream.getTracks().forEach(track => track.stop());
-                    stream = null;
-                }
-            };
-
-            const openCamera = async (inputId, guide) => {
-                currentTargetInputId = inputId;
-                cameraGuideText.innerText = guide;
-                try {
-                    stream = await navigator.mediaDevices.getUserMedia({ 
-                        video: { facingMode: 'environment', width: { ideal: 1920 }, height: { ideal: 1080 } } 
-                    });
-                    video.srcObject = stream;
-                    cameraModal.style.display = 'flex';
-                } catch (err) {
-                    alert('카메라 권한이 필요합니다. 설정에서 권한을 허용해 주세요.');
-                }
-            };
-
-            closeCameraBtn.addEventListener('click', () => {
-                stopStream();
-                cameraModal.style.display = 'none';
-            });
-
-            captureBtn.addEventListener('click', () => {
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext('2d').drawImage(video, 0, 0);
-                capturedImg.src = canvas.toDataURL('image/jpeg');
-                previewModal.classList.remove('hidden');
-            });
-
-            retakeBtn.addEventListener('click', () => previewModal.classList.add('hidden'));
-
-            usePhotoBtn.addEventListener('click', () => {
-                const dataUrl = capturedImg.src;
-                fetch(dataUrl).then(res => res.blob()).then(blob => {
-                    const file = new File([blob], `${currentTargetInputId}.jpg`, { type: "image/jpeg" });
-                    const input = document.getElementById(currentTargetInputId);
-                    const dt = new DataTransfer();
-                    dt.items.add(file);
-                    input.files = dt.files;
-                    showPreview(currentTargetInputId, dataUrl);
-                    previewModal.classList.add('hidden');
-                    cameraModal.style.display = 'none';
-                    stopStream();
-                });
-            });
-
-            const showPreview = (inputId, src) => {
-                const container = document.querySelector(`.attach-container[data-id="${inputId}"]`);
-                if(!container) return;const previewArea = container.querySelector('.preview-area');
-                const imgPreview = container.querySelector('.img-preview');
-                
-                container.querySelector('.btn-grid').classList.add('hidden');
-                previewArea.classList.remove('hidden');
-                imgPreview.src = src;
-            };
-
-            const hidePreview = (inputId) => {
-                const container = document.querySelector(`.attach-container[data-id="${inputId}"]`);
-                if(!container) return;
-                container.querySelector('.btn-grid').classList.remove('hidden');
-                container.querySelector('.preview-area').classList.add('hidden');
-                document.getElementById(inputId).value = '';
-            };
-
-            document.querySelectorAll('.attach-container').forEach(container => {
-                const id = container.getAttribute('data-id');
-                const label = container.getAttribute('data-label');
-                const guide = container.getAttribute('data-guide');
-                const labelClass = container.getAttribute('data-label-class') || 'text-slate-500';
-
-                container.innerHTML = `
-                    <div class="flex flex-col gap-3">
-                        <label class="text-sm md:text-lg font-black uppercase tracking-tight ${labelClass} ml-1 text-left">${label}</label>
-                        <div class="btn-grid grid grid-cols-2 gap-3">
-                            <div class="camera-btn p-4 bg-slate-50 border-2 border-slate-100 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm text-left">
-                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 text-left">
-                                    <svg class="w-5 h-5 text-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                </div>
-                                <span class="text-blue-700 font-black text-xs text-left">사진 촬영</span>
-                            </div>
-                            <div class="album-btn p-4 bg-white border-2 border-dashed border-slate-200 rounded-3xl flex flex-col items-center justify-center gap-2 cursor-pointer hover:border-blue-400 active-scale transition-all shadow-sm text-left">
-                                <input type="file" id="${id}" class="hidden" accept="image/*,.pdf">
-                                <div class="w-8 h-8 bg-slate-100 rounded-full flex items-center justify-center text-slate-500 text-left">
-                                    <svg class="w-5 h-5 text-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                </div>
-                                <span class="text-slate-600 font-black text-xs text-left">앨범 선택</span>
-                            </div>
-                        </div>
-                        <div class="preview-area hidden animate-slide-down text-left">
-                            <div class="relative bg-slate-100 rounded-3xl overflow-hidden border-2 border-blue-500 shadow-2xl text-left">
-                                <img class="img-preview w-full h-48 object-cover text-left">
-
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-5 text-left">
-                                    <div class="flex justify-between items-center text-left">
-                                        <p class="text-white font-black text-sm text-left">${label}</p>
-                                        <button type="button" class="reset-btn px-4 py-2 bg-red-500 text-white rounded-xl font-black text-xs active-scale text-left">초기화</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                container.querySelector('.camera-btn').addEventListener('click', () => openCamera(id, guide));
-                container.querySelector('.album-btn').addEventListener('click', () => container.querySelector('input').click());
-                container.querySelector('.reset-btn').addEventListener('click', () => hidePreview(id));
-                container.querySelector('input').addEventListener('change', (e) => {
-                    if (e.target.files[0]) {
-                        const reader = new FileReader();
-                        reader.onload = (ev) => showPreview(id, ev.target.result);
-                        reader.readAsDataURL(e.target.files[0]);
-                    }
-                });
-            });
-
-            const toggleSection = (id, sectionId) => {
+            const toggleSection = (id, sectionId, inverted = False) => {
                 const chk = document.getElementById(id);
                 const el = document.getElementById(sectionId);
                 if(chk && el) {
                     chk.addEventListener('change', (e) => {
-                        el.style.display = e.target.checked ? 'block' : 'none';
-                        if (e.target.checked) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        const show = inverted ? !e.target.checked : e.target.checked;
+                        el.style.display = show ? 'block' : 'none';
+                        if (show) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     });
                 }
             };
 
-            toggleSection('isJointRep', 'jointRepSection');
-            toggleSection('isSpecialBiz', 'specialBizSection');
+            toggleSection('isJointRep', 'jointRepSection'); toggleSection('isSpecialBiz', 'specialBizSection');
 
-            document.getElementById('noBizNum').addEventListener('change', (e) => {
-                const input = document.getElementById('bizNumber');
-                input.disabled = e.target.checked;
-                input.value = e.target.checked ? '' : input.value;
-                input.classList.toggle('opacity-50', e.target.checked);
-            });
+            const noBizNum = document.getElementById('noBizNum');
+            if (noBizNum) {
+                noBizNum.addEventListener('change', (e) => {
+                    const input = document.getElementById('bizNumber');
+                    if (input) {
+                        input.disabled = e.target.checked;
+                        input.value = e.target.checked ? '' : input.value;
+                        input.classList.toggle('opacity-50', e.target.checked);
+                    }
+                });
+            }
 
-            
-            
             const agreeChk = document.getElementById('policyAgree');
             const submitBtn = document.getElementById('submitAction');
             if (agreeChk && submitBtn) {
@@ -607,14 +476,15 @@
                     }
                 });
             }
-    );
-            }
-    
 
-            document.getElementById('registrationForm').addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('신청이 완료되었습니다!');
-            });});
+            const registrationForm = document.getElementById('registrationForm');
+            if (registrationForm) {
+                registrationForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('개인사업자 가맹점 신청이 정상적으로 접수되었습니다!');
+                });
+            }
+        });
     </script>
     <div id="photoGuidePopup" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePhotoGuide()"></div>
@@ -775,7 +645,5 @@
             </div>
         </div>
     </div>
-</body>
-</html>
 </body>
 </html>
