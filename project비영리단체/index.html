@@ -7,21 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    
     <script>
-            const content = document.getElementById('guideContent');
-            const content = document.getElementById('guideContent');
-
-            const content = document.getElementById('guideContent');
-
-            const content = document.getElementById('guideContent');
-
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#ee2b5b",
-                        "primary-dark": "#c21841",
+                        "primary": "#3b82f6",
+                        "primary-dark": "#1d4ed8",
+                    }
+                }
+            }
+        }
     </script>
+    
     <style>
         body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; background-color: #f8fafc; color: #1e293b; }
         .required-mark::after { content: ' *'; color: #ee2b5b; font-weight: bold; }
@@ -37,6 +36,12 @@
         #cameraPreview { width: 100%; height: 100%; object-fit: cover; }
         .camera-guide { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; height: 65%; border: 3px dashed rgba(255, 255, 255, 0.8); border-radius: 24px; pointer-events: none; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6); }
         .capture-btn { width: 80px; height: 84px; background: #fff; border: 6px solid rgba(255, 255, 255, 0.3); border-radius: 50%; cursor: pointer; transition: transform 0.1s; }
+    
+        .btn-active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+    
     </style>
 </head>
 <body class="antialiased">
@@ -634,16 +639,23 @@
             toggleSection('isUseSeal', 'useSealSection');
             toggleSection('isMissingDocs', 'missingDocsSection');
 
-            document.getElementById('policyAgree').addEventListener('change', (e) => {
-                const btn = document.getElementById('submitAction');
-                const isChecked = e.target.checked;
-                btn.disabled = !isChecked;
-                if (isChecked) {
-                    btn.className = "w-full py-4 md:py-5 bg-primary text-white rounded-2xl md:rounded-3xl font-black text-lg md:text-xl shadow-2xl active-scale transition-all uppercase tracking-widest border-none";
-                } else {
-                    btn.className = "w-full py-4 md:py-5 bg-slate-100 text-slate-400 rounded-2xl md:rounded-3xl font-black text-lg md:text-xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200 shadow-sm";
-                }
-            });
+            
+            
+            const agreeChk = document.getElementById('policyAgree');
+            const submitBtn = document.getElementById('submitAction');
+            if (agreeChk && submitBtn) {
+                agreeChk.addEventListener('change', function() {
+                    submitBtn.disabled = !this.checked;
+                    if (this.checked) {
+                        submitBtn.className = "w-full py-5 md:py-8 btn-active text-white rounded-2xl md:rounded-[2.5rem] font-black text-xl md:text-3xl active-scale transition-all uppercase tracking-widest border-none shadow-xl";
+                    } else {
+                        submitBtn.className = "w-full py-5 md:py-8 bg-slate-100 text-slate-400 rounded-2xl md:rounded-[2.5rem] font-black text-xl md:text-3xl transition-all uppercase tracking-widest cursor-not-allowed border border-slate-200 shadow-sm";
+                    }
+                });
+            }
+    );
+            }
+    
 
             document.getElementById('registrationForm').addEventListener('submit', (e) => {
                 e.preventDefault();
