@@ -8,6 +8,46 @@
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
+            const content = document.getElementById('guideContent');
+            const content = document.getElementById('guideContent');
+
+            const content = document.getElementById('guideContent');
+
+            const content = document.getElementById('guideContent');
+
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2b5b",
+                        "primary-dark": "#c21841",
+    </script>
+    <style>
+        body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; background-color: #f8fafc; color: #1e293b; }
+        .required-mark::after { content: ' *'; color: #ee2b5b; font-weight: bold; }
+        .active-scale:active { transform: scale(0.98); transition: transform 0.1s; }
+        .input-focus:focus { border-color: #3b82f6; box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); }
+        .hidden-section { display: none; }
+        .reveal { animation: revealUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        @keyframes revealUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        #cameraModal { display: none; position: fixed; inset: 0; background: #000; z-index: 1000; flex-direction: column; align-items: center; justify-content: center; }
+        #cameraPreview { width: 100%; height: 100%; object-fit: cover; }
+        .camera-guide { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 85%; height: 65%; border: 3px dashed rgba(255, 255, 255, 0.8); border-radius: 24px; pointer-events: none; box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6); }
+        .capture-btn { width: 80px; height: 84px; background: #fff; border: 6px solid rgba(255, 255, 255, 0.3); border-radius: 50%; cursor: pointer; transition: transform 0.1s; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Camera Modal -->
+    <div id="cameraModal">
+        <video id="cameraPreview" autoplay playsinline></video>
+        <div class="camera-guide"></div>
+        <div class="absolute inset-0 flex flex-col justify-between p-10 pointer-events-none">
+            <div class="text-center pt-10">
+                <p id="cameraGuideText" class="text-white text-xl md:text-2xl font-black drop-shadow-lg leading-relaxed"></p>
             </div>
     <!-- 촬영 가이드 팝업 -->
 
@@ -415,6 +455,34 @@
             }
         }
 
+        function old_openPhotoGuide() {
+            const popup = document.getElementById('photoGuidePopup');
+            const content = document.getElementById('guideContent');
+            if(popup && content) {
+                popup.classList.remove('hidden');
+                setTimeout(() => content.classList.remove('translate-y-full'), 10);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closePhotoGuide() {
+            const popup = document.getElementById('photoGuidePopup');
+            const content = document.getElementById('guideContent');
+            if(popup && content) {
+                content.classList.add('translate-y-full');
+                document.body.style.overflow = '';
+                setTimeout(() => popup.classList.add('hidden'), 300);
+            }
+        }
+
+        function execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
+                    document.getElementById("address").value = addr;
+                    document.getElementById("addressDetail").focus();
+                }
+            }).open();
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -583,7 +651,6 @@
             });
         });
     </script>
-</body>
     <div id="photoGuidePopup" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePhotoGuide()"></div>
         <div class="absolute bottom-0 left-0 right-0 max-w-2xl mx-auto bg-white rounded-t-[3rem] shadow-2xl transform translate-y-full transition-all duration-300 ease-out flex flex-col h-[90vh]" id="guideContent">
@@ -682,4 +749,5 @@
             </div>
         </div>
     </div>
+</body>
 </html>

@@ -8,9 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>
-                setTimeout(() => popup.classList.add('hidden'), 300);
-            }
-        }
+            const content = document.getElementById('guideContent');
+            const content = document.getElementById('guideContent');
 
         tailwind.config = {
             theme: {
@@ -18,10 +17,6 @@
                     colors: {
                         "primary": "#ee2b5b",
                         "primary-dark": "#c21841",
-                    }
-                }
-            }
-        }
     </script>
     <style>
         body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; background-color: #f8fafc; color: #1e293b; }
@@ -376,67 +371,6 @@
     </div>
 
     <!-- 촬영 가이드 팝업 -->
-    <div id="photoGuidePopup" class="fixed inset-0 z-[100] hidden">
-        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePhotoGuide()"></div>
-        <div class="absolute bottom-0 left-0 right-0 max-w-2xl mx-auto bg-white rounded-t-[3rem] shadow-2xl transform translate-y-full transition-all duration-300 ease-out flex flex-col h-[90vh]" id="guideContent">
-            <!-- Header -->
-            <div class="sticky top-0 bg-white z-10 px-8 pt-8 pb-4 rounded-t-[3rem]">
-                <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-6"></div>
-                <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-2xl font-black text-slate-900 tracking-tight">매장 내/외부 사진 촬영 가이드</h3>
-                    <button onclick="closePhotoGuide()" class="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors">
-                        <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
-                    </button>
-                </div>
-                <p class="text-slate-500 font-bold text-sm">카드 가맹점 등록을 위한 필수 서류입니다.</p>
-            </div>
-            
-                            </div>
-                            <p class="text-sm text-slate-500 font-bold leading-snug">구석에서 매장 내부가 최대한 넓게 다 보이도록 찍어주세요.</p>
-                            <div class="rounded-[1.5rem] overflow-hidden border-2 border-slate-100 shadow-sm">
-                        <div class="space-y-3"><img src="../Store_Examples/내부1.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                                <div class="bg-slate-50 p-3 text-center text-xs font-black text-slate-400">내부 전경 예시 1</div>
-                            </div>
-                        </div>
-
-                        <!-- 내부 2 -->
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-2">
-                                <span class="px-2 py-1 bg-slate-800 text-white text-[10px] font-black rounded uppercase">내부 2</span>
-                                <h5 class="font-black text-slate-800">다른 각도 전경</h5>
-                            </div>
-                            <p class="text-sm text-slate-500 font-bold leading-snug">반대편 구석이나 다른 각도에서 매장이 넓게 보이게 촬영해주세요.</p>
-                            <div class="rounded-[1.5rem] overflow-hidden border-2 border-slate-100 shadow-sm">
-                        <div class="space-y-3"><img src="../Store_Examples/내부2.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                                <div class="bg-slate-50 p-3 text-center text-xs font-black text-slate-400">내부 전경 예시 2</div>
-                            </div>
-                        </div>
-
-                        <!-- 내부 3 -->
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-2">
-                                <span class="px-2 py-1 bg-slate-800 text-white text-[10px] font-black rounded uppercase">내부 3</span>
-                                <h5 class="font-black text-slate-800">판매 물품 및 업종 증빙</h5>
-                            </div>
-                            <p class="text-sm text-slate-500 font-bold leading-snug">네일샵 시술대, 헬스장 기구 등 업종을 확실히 알 수 있는 곳을 찍어주세요.</p>
-                            <div class="rounded-[1.5rem] overflow-hidden border-2 border-slate-100 shadow-sm">
-                        <div class="space-y-3"><img src="../Store_Examples/내부3.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
-                                <div class="bg-slate-50 p-3 text-center text-xs font-black text-slate-400">업종 증빙 사진 예시</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Footer Action -->
-            <div class="p-8 bg-white border-t border-slate-100">
-                <button onclick="closePhotoGuide()" class="w-full py-5 bg-slate-900 text-white rounded-[1.5rem] font-black text-lg active:scale-[0.98] transition-all shadow-xl shadow-slate-200">
-                    가이드 확인 완료
-                </button>
-            </div>
-        </div>
-    </div>
 
     <script>
         function openPhotoGuide() {
@@ -458,6 +392,31 @@
             }
         }
 
+        function old_openPhotoGuide() {
+            const popup = document.getElementById('photoGuidePopup');
+            const content = document.getElementById('guideContent');
+            popup.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('translate-y-full');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePhotoGuide() {
+            const popup = document.getElementById('photoGuidePopup');
+            const content = document.getElementById('guideContent');
+            content.classList.add('translate-y-full');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                popup.classList.add('hidden');
+            }, 300);
+        }
+
+        function execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
+                    document.getElementById("address").value = addr;
                     document.getElementById("addressDetail").focus();
                 }
             }).open();
@@ -635,7 +594,21 @@
                 alert('신청이 완료되었습니다!');
             });});
     </script>
-</body>
+    <div id="photoGuidePopup" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePhotoGuide()"></div>
+        <div class="absolute bottom-0 left-0 right-0 max-w-2xl mx-auto bg-white rounded-t-[3rem] shadow-2xl transform translate-y-full transition-all duration-300 ease-out flex flex-col h-[90vh]" id="guideContent">
+            <!-- Header -->
+            <div class="sticky top-0 bg-white z-10 px-8 pt-8 pb-4 rounded-t-[3rem]">
+                <div class="w-12 h-1.5 bg-slate-200 rounded-full mx-auto mb-6"></div>
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-2xl font-black text-slate-900 tracking-tight">매장 내/외부 사진 촬영 가이드</h3>
+                    <button onclick="closePhotoGuide()" class="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors">
+                        <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                <p class="text-slate-500 font-bold text-sm">카드 가맹점 등록을 위한 필수 서류입니다.</p>
+            </div>
+            
             <!-- Scrollable Content -->
             <div class="flex-1 overflow-y-auto px-8 pb-12 custom-scrollbar">
                 <div class="space-y-10">
@@ -734,4 +707,51 @@
                             <div class="flex items-center gap-2">
                                 <span class="px-2 py-1 bg-slate-800 text-white text-[10px] font-black rounded uppercase">내부 1</span>
                                 <h5 class="font-black text-slate-800">매장 전체 전경</h5>
+                            </div>
+                            <p class="text-sm text-slate-500 font-bold leading-snug">구석에서 매장 내부가 최대한 넓게 다 보이도록 찍어주세요.</p>
+                            <div class="rounded-[1.5rem] overflow-hidden border-2 border-slate-100 shadow-sm">
+                        <div class="space-y-3"><img src="../Store_Examples/내부1.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                                <div class="bg-slate-50 p-3 text-center text-xs font-black text-slate-400">내부 전경 예시 1</div>
+                            </div>
+                        </div>
+
+                        <!-- 내부 2 -->
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-1 bg-slate-800 text-white text-[10px] font-black rounded uppercase">내부 2</span>
+                                <h5 class="font-black text-slate-800">다른 각도 전경</h5>
+                            </div>
+                            <p class="text-sm text-slate-500 font-bold leading-snug">반대편 구석이나 다른 각도에서 매장이 넓게 보이게 촬영해주세요.</p>
+                            <div class="rounded-[1.5rem] overflow-hidden border-2 border-slate-100 shadow-sm">
+                        <div class="space-y-3"><img src="../Store_Examples/내부2.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                                <div class="bg-slate-50 p-3 text-center text-xs font-black text-slate-400">내부 전경 예시 2</div>
+                            </div>
+                        </div>
+
+                        <!-- 내부 3 -->
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-1 bg-slate-800 text-white text-[10px] font-black rounded uppercase">내부 3</span>
+                                <h5 class="font-black text-slate-800">판매 물품 및 업종 증빙</h5>
+                            </div>
+                            <p class="text-sm text-slate-500 font-bold leading-snug">네일샵 시술대, 헬스장 기구 등 업종을 확실히 알 수 있는 곳을 찍어주세요.</p>
+                            <div class="rounded-[1.5rem] overflow-hidden border-2 border-slate-100 shadow-sm">
+                        <div class="space-y-3"><img src="../Store_Examples/내부3.png" class="w-full h-auto object-cover rounded-2xl shadow-lg"></div>
+                                <div class="bg-slate-50 p-3 text-center text-xs font-black text-slate-400">업종 증빙 사진 예시</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer Action -->
+            <div class="p-8 bg-white border-t border-slate-100">
+                <button onclick="closePhotoGuide()" class="w-full py-5 bg-slate-900 text-white rounded-[1.5rem] font-black text-lg active:scale-[0.98] transition-all shadow-xl shadow-slate-200">
+                    가이드 확인 완료
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

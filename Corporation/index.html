@@ -7,6 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+            const content = document.getElementById('guideContent');
+            const content = document.getElementById('guideContent');
+
+            const content = document.getElementById('guideContent');
+            const content = document.getElementById('guideContent');
 
         tailwind.config = {
             theme: {
@@ -14,10 +20,6 @@
                     colors: {
                         "primary": "#ee2b5b",
                         "primary-dark": "#c21841",
-                    }
-                }
-            }
-        }
     </script>
     <style>
         body { font-family: 'Pretendard', sans-serif; letter-spacing: -0.02em; background-color: #f8fafc; color: #1e293b; }
@@ -47,6 +49,7 @@
                 <p id="cameraGuideText" class="text-white text-xl md:text-2xl font-black drop-shadow-lg leading-relaxed"></p>
             </div>
     <!-- 촬영 가이드 팝업 -->
+
             <div class="flex justify-between items-center px-10 pb-10 pointer-events-auto">
                 <button type="button" id="closeCamera" class="text-white font-bold text-lg px-6 py-3 rounded-full bg-black/40 backdrop-blur-md text-left text-left">닫기</button>
                 <button type="button" id="capturePhoto" class="capture-btn shadow-2xl active-scale"></button>
@@ -423,6 +426,31 @@
             }
         }
 
+        function old_openPhotoGuide() {
+            const popup = document.getElementById('photoGuidePopup');
+            const content = document.getElementById('guideContent');
+            if(popup && content) {
+                popup.classList.remove('hidden');
+                setTimeout(() => content.classList.remove('translate-y-full'), 10);
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        function closePhotoGuide() {
+            const popup = document.getElementById('photoGuidePopup');
+            const content = document.getElementById('guideContent');
+            if(popup && content) {
+                content.classList.add('translate-y-full');
+                document.body.style.overflow = '';
+                setTimeout(() => popup.classList.add('hidden'), 300);
+            }
+        }
+
+        function execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = data.userSelectedType === 'R' ? data.roadAddress : data.jibunAddress;
+                    document.getElementById("address").value = addr;
+                    document.getElementById("addressDetail").focus();
                 }
             }).open();
         }
@@ -591,7 +619,6 @@
             });
         });
     </script>
-</body>
     <div id="photoGuidePopup" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closePhotoGuide()"></div>
         <div class="absolute bottom-0 left-0 right-0 max-w-2xl mx-auto bg-white rounded-t-[3rem] shadow-2xl transform translate-y-full transition-all duration-300 ease-out flex flex-col h-[90vh]" id="guideContent">
@@ -639,5 +666,5 @@
             </div>
         </div>
     </div>
-
+</body>
 </html>
